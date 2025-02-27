@@ -5,6 +5,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler,StandardScaler
 from sklearn.model_selection import train_test_split
 from imblearn.combine import SMOTEENN
+from imblearn.over_sampling import SMOTE
+from imblearn.under_sampling import EditedNearestNeighbours
 
 
 def outlier_thresholds(dataframe, col_name, q1=0.05, q3=0.95):
@@ -58,7 +60,11 @@ def __cleaning_data(df):
     return df
 def __smote_data(X,y):
     # 4. SMOTE 적용
-    sm = SMOTEENN()
+    #smote = SMOTE(sampling_strategy=0.5, k_neighbors=3)
+    #enn = EditedNearestNeighbours(n_neighbors=3)
+
+    # SMOTEENN 파라미터 조정
+    sm = SMOTEENN(sampling_strategy=0.6, n_jobs=-1)
     X_smo, y_smo = sm.fit_resample(X, y)
     return X_smo,y_smo
 
@@ -94,7 +100,7 @@ def preprocess_dataset(data):
     x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
 
 
-    #X_smo, y_smo = __smote_data(x_train, y_train)
+    x_train, y_train = __smote_data(x_train, y_train)
 
 
 
