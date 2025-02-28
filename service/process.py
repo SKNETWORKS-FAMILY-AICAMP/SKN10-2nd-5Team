@@ -11,31 +11,33 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import StackingClassifier
 import matplotlib.pyplot as plt 
+from utils import reset_seeds
 param_grid_lr = {
-    'C': [0.01, 0.1, 1, 10],
-    'solver': ['liblinear', 'saga'],
-    'max_iter': [400, 500],
-    'tol':[1e-3, 1e-2, 1e-1]
+    'C': [1],
+    'solver': ['liblinear'],
+    'max_iter': [400, 500,600],
+    'tol':[1e-3, 1e-4]
 }
 
 # Random Forest
 param_grid_rf = {
-    'n_estimators': [50, 100, 200],
-    'max_depth': [None, 10, 20, 30],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4]
+    'n_estimators': [200, 300, 400],
+    'max_depth': [20, 40, 50],
+    'min_samples_split': [10, 15, 20],
+    'min_samples_leaf': [4, 6, 8]
 }
 
 # XGBoost
 param_grid_xgb = {
-    'n_estimators': [50, 100, 200],
-    'learning_rate': [0.01, 0.1, 0.2],
-    'max_depth': [3, 5, 7],
-    'subsample': [0.8, 1.0]
+    'n_estimators': [100, 300],
+    'learning_rate': [0.05, 0.1, 0.15],
+    'max_depth': [2, 3],
+    'subsample': [0.7, 0.8, 0.9]
 }
+@reset_seeds
 def process(x,y):
     is_Regression = False
-
+    """ grid search parameters
     clf1 = LogisticRegression(random_state=42)
     clf2 = RandomForestClassifier(random_state=42)
     clf3 = XGBClassifier(random_state=42)
@@ -52,6 +54,14 @@ def process(x,y):
     best_rf = grid_search_rf.best_estimator_
     best_xgb = grid_search_xgb.best_estimator_
 
+    print("Best Parameterslr:", grid_search_lr.best_params_)
+    print("Best Parametersrf:", grid_search_rf.best_params_)
+    print("Best Parametersxgb:", grid_search_xgb.best_params_)
+    """
+    best_lr = LogisticRegression(C=1,max_iter=400,solver='liblinear',tol=0.001)
+    best_rf = RandomForestClassifier(max_depth=20,min_samples_split=10,min_samples_leaf=4,n_estimators=200)
+    best_xgb = XGBClassifier(learning_rate=0.1,max_depth=2,n_estimators=300,subsample=0.7)
+    
     # Hard VotingClassifier 정의
     model = VotingClassifier(estimators=[('lr', best_lr), ('rf', best_rf), ('xgb', best_xgb)], voting='hard')
     cv = StratifiedKFold(n_splits=3, shuffle=True)
@@ -67,13 +77,14 @@ def process(x,y):
         # score 안좋아지면 stop
         X_train, X_test = x.iloc[train_index], x.iloc[test_index]
         y_train, y_test = y.iloc[train_index], y.iloc[test_index]
-        sm = SMOTEENN(sampling_strategy=0.5)
+        sm = SMOTEENN(sampling_strategy=0.65)
         X_train, y_train = sm.fit_resample(X_train, y_train)
         # 모델 학습
         model.fit(X_train, y_train)
         epoch += 1
         print(f"epoch : {epoch}")
         val_score = f1_score(y_test, model.predict(X_test))
+        print(y_train.mean())
         print(f"score: {val_score}")
         if val_score > best_score:
             best_score = val_score

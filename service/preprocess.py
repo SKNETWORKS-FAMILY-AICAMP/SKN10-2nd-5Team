@@ -9,24 +9,6 @@ from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import EditedNearestNeighbours
 
 
-def outlier_thresholds(dataframe, col_name, q1=0.05, q3=0.95):
-    quartile1 = dataframe[col_name].quantile(q1)
-    quartile3 = dataframe[col_name].quantile(q3)
-    interquantile_range = quartile3 - quartile1
-    up_limit = quartile3 + 1.5 * interquantile_range
-    low_limit = quartile1 - 1.5 * interquantile_range
-    return low_limit, up_limit
-def check_outlier(dataframe, col_name, plot=False):
-    low_limit, up_limit = outlier_thresholds(dataframe, col_name)
-    outliers = dataframe[(dataframe[col_name] > up_limit) | (dataframe[col_name] < low_limit)]
-    if outliers.any(axis=None):
-        return True
-    else:
-        return False
-def replace_with_thresholds(dataframe, variable, q1=0.05, q3=0.95):
-    low_limit, up_limit = outlier_thresholds(dataframe, variable, q1=0.05, q3=0.95)
-    dataframe.loc[(dataframe[variable] < low_limit), variable] = low_limit
-    dataframe.loc[(dataframe[variable] > up_limit), variable] = up_limit
 def __create_custom_features(df):
 
     df.loc[(df["tenure"]>=0) & (df["tenure"]<=12),"NEW_TENURE_YEAR"] = "0-1 Year"
@@ -36,28 +18,24 @@ def __create_custom_features(df):
     df.loc[(df["tenure"]>48) & (df["tenure"]<=60),"NEW_TENURE_YEAR"] = "4-5 Year"
     df.loc[(df["tenure"]>60) & (df["tenure"]<=72),"NEW_TENURE_YEAR"] = "5-6 Year"
 
-    df['NEW_TotalServices'] = (df[['PhoneService', 'InternetService', 'OnlineSecurity',
-                                        'OnlineBackup', 'DeviceProtection', 'TechSupport',
-                                        'StreamingTV', 'StreamingMovies']]== 1).sum(axis=1)
+    #df['NEW_TotalServices'] = (df[['PhoneService', 'InternetService', 'OnlineSecurity',
+    #                                    'OnlineBackup', 'DeviceProtection', 'TechSupport',
+    #                                    'StreamingTV', 'StreamingMovies']]== 1).sum(axis=1)
     df["NEW_AVG_Charges"] = df["TotalCharges"] / (df["tenure"] + 1)
     df["NEW_Increase"] = df["NEW_AVG_Charges"] / df["MonthlyCharges"]
-    df["NEW_AVG_Service_Fee"] = df["MonthlyCharges"] / (df['NEW_TotalServices'] + 1)
-    df.drop(columns = ['PhoneService', 'gender','StreamingTV','StreamingMovies','MultipleLines','InternetService'],inplace = True)
+    #df["NEW_AVG_Service_Fee"] = df["MonthlyCharges"] / (df['NEW_TotalServices'] + 1)
+    #df.drop(columns = ['PhoneService', 'gender','StreamingTV','StreamingMovies','MultipleLines','InternetService'],inplace = True)
     return df
 
 def __cleaning_data(df):
     df=df.dropna()
     num_cols = ['tenure','MonthlyCharges','TotalCharges']
-    for col in num_cols:
-        if check_outlier(df, col):
-            replace_with_thresholds(df, col)
     mms = MinMaxScaler() # Normalization
-    ss = StandardScaler()
     df['tenure'] = mms.fit_transform(df[['tenure']])
     df['MonthlyCharges'] = mms.fit_transform(df[['MonthlyCharges']])
     df['TotalCharges'] = mms.fit_transform(df[['TotalCharges']])
     df["NEW_AVG_Charges"] = mms.fit_transform(df[["NEW_AVG_Charges"]])
-    df['NEW_AVG_Service_Fee'] = mms.fit_transform(df[['NEW_AVG_Service_Fee']])
+    #df['NEW_AVG_Service_Fee'] = mms.fit_transform(df[['NEW_AVG_Service_Fee']])
     df['NEW_Increase'] = mms.fit_transform(df[['NEW_Increase']])
     return df
 def __smote_data(X,y):
@@ -71,15 +49,17 @@ def __smote_data(X,y):
     return X_smo,y_smo
 
 def __encode_data(df):
-    le=LabelEncoder()
-    df['Churn']=le.fit_transform(df['Churn'])
+    #le=LabelEncoder()
+    #df['Churn']=le.fit_transform(df['Churn'])
 
 
     numeric_data=df.select_dtypes(include=np.number)
     categorical_data=df.select_dtypes(exclude=np.number)
 
-    for i in categorical_data.columns:
-        df[i]=le.fit_transform(categorical_data[i])
+    #for i in categorical_data.columns:
+    #    df[i]=le.fit_transform(categorical_data[i])
+    columns = df.select_dtypes(include=['category','object']).columns
+    df = pd.get_dummies(df, columns=columns, drop_first=False)
     return df
 
 
@@ -87,16 +67,19 @@ def __encode_data(df):
 @reset_seeds
 def preprocess_dataset(data):
     df=data.dropna()
+    le=LabelEncoder()
+    df['Churn']=le.fit_transform(df['Churn'])
     df['TotalCharges']=pd.to_numeric(df['TotalCharges'],errors='coerce')
-    columns = df.select_dtypes(include=['category','object']).columns
-    label_encoder = LabelEncoder()
-    for col in columns:
-        df[col] = label_encoder.fit_transform(df[col])
+    
+    #label_encoder = LabelEncoder()
+    #or col in columns:
+    #    df[col] = label_encoder.fit_transform(df[col])
+    
     df = __create_custom_features(df)
-    df = __encode_data(df)
+    #df = __encode_data(df)
     df = __cleaning_data(df)
-    
-    
+    columns = df.select_dtypes(include=['category','object']).columns
+    df = pd.get_dummies(df, columns=columns, drop_first=False)
     y = df["Churn"]
     X = df.drop(columns=["Churn"],axis=1)
     x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.2,stratify=y)
