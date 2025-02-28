@@ -43,7 +43,6 @@ def __create_custom_features(df):
     df["NEW_Increase"] = df["NEW_AVG_Charges"] / df["MonthlyCharges"]
     df["NEW_AVG_Service_Fee"] = df["MonthlyCharges"] / (df['NEW_TotalServices'] + 1)
     df.drop(columns = ['PhoneService', 'gender','StreamingTV','StreamingMovies','MultipleLines','InternetService'],inplace = True)
-    
     return df
 
 def __cleaning_data(df):
@@ -57,6 +56,9 @@ def __cleaning_data(df):
     df['tenure'] = mms.fit_transform(df[['tenure']])
     df['MonthlyCharges'] = mms.fit_transform(df[['MonthlyCharges']])
     df['TotalCharges'] = mms.fit_transform(df[['TotalCharges']])
+    df["NEW_AVG_Charges"] = mms.fit_transform(df[["NEW_AVG_Charges"]])
+    df['NEW_AVG_Service_Fee'] = mms.fit_transform(df[['NEW_AVG_Service_Fee']])
+    df['NEW_Increase'] = mms.fit_transform(df[['NEW_Increase']])
     return df
 def __smote_data(X,y):
     # 4. SMOTE 적용
@@ -64,7 +66,7 @@ def __smote_data(X,y):
     #enn = EditedNearestNeighbours(n_neighbors=3)
 
     # SMOTEENN 파라미터 조정
-    sm = SMOTEENN(sampling_strategy=0.6, n_jobs=-1)
+    sm = SMOTEENN(sampling_strategy=0.5)
     X_smo, y_smo = sm.fit_resample(X, y)
     return X_smo,y_smo
 
@@ -97,10 +99,10 @@ def preprocess_dataset(data):
     
     y = df["Churn"]
     X = df.drop(columns=["Churn"],axis=1)
-    x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
+    x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.2,stratify=y)
 
 
-    x_train, y_train = __smote_data(x_train, y_train)
+    #x_train, y_train = __smote_data(x_train, y_train)
 
 
 
