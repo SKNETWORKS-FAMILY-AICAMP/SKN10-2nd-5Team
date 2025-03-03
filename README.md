@@ -17,11 +17,11 @@
     <td style="text-align: center; width: 20%;">좌민서</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 설계</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
+    <td style="text-align: center; width: 20%;">모델 설계 및 화면 구현</td>
+    <td style="text-align: center; width: 20%;">모델 설계 및 화면 구현</td>
+    <td style="text-align: center; width: 20%;">모델 설계 및 화면 구현</td>
+    <td style="text-align: center; width: 20%;">모델 설계 및 화면 구현</td>
+    <td style="text-align: center; width: 20%;">모델 설계 및 화면 구현</td>
   </tr>
   <tr>
     <td style="text-align: center; width: 20%;"><a href="https://github.com/Eseo0">@Lee Seoyoung</a></td>
