@@ -1,7 +1,4 @@
 # SKN10-2nd-5Team
-# [가입 고객 이탈 예측](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
-
-# SKN10-2nd-5Team
 <br/>
 
 ![](https://cdn.imweb.me/upload/S20240314bd10436a7991a/41a9769cc44e6.png)
