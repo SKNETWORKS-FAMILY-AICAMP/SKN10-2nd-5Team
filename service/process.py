@@ -5,7 +5,7 @@ import warnings
 from optuna.samplers import TPESampler
 from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score
-from service.utils import reset_seeds
+from utils import reset_seeds
 
 warnings.filterwarnings("ignore")
 

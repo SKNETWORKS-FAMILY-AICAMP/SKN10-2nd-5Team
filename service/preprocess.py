@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
-from service.utils import reset_seeds
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split
+from utils import reset_seeds
 
 def __encode_data(df):
     df['TotalCharges'].replace(' ', 0, inplace=True)

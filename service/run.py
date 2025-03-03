@@ -1,6 +1,6 @@
-from service.data import load_data
-from service.preprocess import preprocess_dataset
-from service.process import train_model
+from data import load_data
+from preprocess import preprocess_dataset
+from process import train_model
 
 def main():
     total_data = load_data()

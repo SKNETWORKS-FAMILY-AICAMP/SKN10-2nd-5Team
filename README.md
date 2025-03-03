@@ -133,7 +133,7 @@
 ```
 <br/>
 
-### 2. 가상환경 구축축
+### 2. 가상환경 구축
 <br/>
 
 ```python
@@ -154,6 +154,13 @@
 ### 4. 서비스 실행
 <br/>
 
+**모델 생성 및 정확도 계산**
+```python
+    cd service
+    python run.py
+```
+
+#### 고객 예측 서비스
 ```python
     streamlit run mainpage.py
 ```
