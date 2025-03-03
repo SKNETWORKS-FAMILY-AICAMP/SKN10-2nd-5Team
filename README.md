@@ -10,25 +10,25 @@
 
 <table style="width: 100%; table-layout: fixed;">
   <tr>
-    <td style="text-align: center; width: 20%;">이서영</td>
-    <td style="text-align: center; width: 20%;">경규휘</td>
-    <td style="text-align: center; width: 20%;">권석현</td>
-    <td style="text-align: center; width: 20%;">원유형</td>
-    <td style="text-align: center; width: 20%;">좌민서</td>
+    <td style="text-align: center; width: 100%;">이서영</td>
+    <td style="text-align: center; width: 100%;">경규휘</td>
+    <td style="text-align: center; width: 100%;">권석현</td>
+    <td style="text-align: center; width: 100%;">원유형</td>
+    <td style="text-align: center; width: 100%;">좌민서</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 설계</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
+    <td style="text-align: center; width: 100%;">모델 설계<br/>화면 구현</td>
+    <td style="text-align: center; width: 100%;">모델 설계<br/>화면 구현</td>
+    <td style="text-align: center; width: 100%;">모델 설계<br/>화면 구현</td>
+    <td style="text-align: center; width: 100%;">모델 설계<br/>화면 설계</td>
+    <td style="text-align: center; width: 100%;">모델 설계<br/>화면 구현</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/Eseo0">@Lee Seoyoung</a></td>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/kqe123">@kqe0012</a></td>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/seo-droid">@seo-droid</a></td>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/uhyeong">uhyeong</a></td>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/INe904">@INe</a></td>
+    <td style="text-align: center; width: 100%;"><a href="https://github.com/Eseo0">@Lee Seoyoung</a></td>
+    <td style="text-align: center; width: 100%;"><a href="https://github.com/kqe123">@kqe0012</a></td>
+    <td style="text-align: center; width: 100%;"><a href="https://github.com/seo-droid">@seo-droid</a></td>
+    <td style="text-align: center; width: 100%;"><a href="https://github.com/uhyeong">uhyeong</a></td>
+    <td style="text-align: center; width: 100%;"><a href="https://github.com/INe904">@INe</a></td>
   </tr>
 </table>
 <br/>
