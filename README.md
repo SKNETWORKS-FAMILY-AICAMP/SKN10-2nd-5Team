@@ -52,7 +52,7 @@
 <br/>
 
 **1. 고객 데이터 분석**
-- [통신사의 고객 데이터를 기반](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)으로 이탈 가능성에 영향을 미치는 주요 요인들을 식별한다.
+- [**통신사의 고객 데이터**](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)를 기반으로 이탈 가능성에 영향을 미치는 주요 요인들을 식별한다.
 <br/>
 
 **2. 예측 모델 개발**
@@ -115,7 +115,17 @@
 ```
 <br/>
 
-### 2. 라이브러리 설치
+### 2. 가상환경 구축축
+<br/>
+
+```python
+    py -3.13 -m venv .venv
+    .\.venv\Scripts\activate
+    python -m pip install --upgrade pip
+```
+<br/>
+
+### 3. 라이브러리 설치
 <br/>
 
 ```python
@@ -123,7 +133,7 @@
 ```
 <br/>
 
-### 3. 서비스 실행
+### 4. 서비스 실행
 <br/>
 
 ```python
@@ -155,4 +165,29 @@
 
 
 ## ✍️ 팀원별 느낀점
+<br/>
+
+### 이서영
+<br/>
+
+<br/>
+
+### 경규휘
+<br/>
+
+<br/>
+
+### 권석현
+<br/>
+
+<br/>
+
+### 원유형
+<br/>
+
+<br/>
+
+### 좌민서
+<br/>
+
 <br/>
