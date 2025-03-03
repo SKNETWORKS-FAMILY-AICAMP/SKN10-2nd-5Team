@@ -15,8 +15,10 @@ data['TotalCharges'] = pd.to_numeric(data['TotalCharges'])  # 숫자로 변환
 
 # 컬럼 추가
 data['notSecurityBackup'] = data.apply(lambda x : 1 if x['OnlineBackup'] == "No" and x['OnlineSecurity'] == "No" else 0, axis=1) # 보안, 백업 서비스를 사용 안하면 1
-#ori_all['isAlone'] = ori_all.apply(lambda x : 1 if x['Partner'] == 0 and x['Dependents'] == 0 else 0, axis=1) # 혼자인지 여부
+data['isAlone'] = data.apply(lambda x : 1 if x['Partner'] == 0 and x['Dependents'] == 0 else 0, axis=1) # 혼자인지 여부
 data['notTechSupport'] = data.apply(lambda x : 1 if x['TechSupport'] == "No" and x['Contract'] == "Month-to-month" else 0, axis=1) # 기술지원 x, 계약기간 짧으면 1
+data["new_avg_charges"] = data["TotalCharges"] / (data["tenure"] + 1)
+data["new_increase"] = data["new_avg_charges"] / data["MonthlyCharges"]
 
 # 컬럼 삭제
 data = drop_columns(data)

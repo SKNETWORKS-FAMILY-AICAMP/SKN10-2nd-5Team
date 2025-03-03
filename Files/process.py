@@ -30,7 +30,14 @@ def dataset_split(df) :
 #kf = KFold(n_splits=num_folds, shuffle=True, random_state=42)
 def train_model(x_tr, x_te, y_tr, y_te) :
     model = lgb.LGBMClassifier(
-        random_state=42
+        random_state=42,
+        subsample=0.9,
+        reg_lambda=0.0,
+        reg_alpha=0.2, 
+        num_leaves=100,
+        n_estimators=100,
+        max_depth=3, 
+        learning_rate=0.05
     )
     print(f'{x_tr.shape} / {y_tr.shape}')
 

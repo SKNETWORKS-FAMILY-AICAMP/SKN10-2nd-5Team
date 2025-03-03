@@ -16,7 +16,7 @@ plt.rcParams['font.family'] = font_prop.get_name()
 st.set_page_config(page_title="고객 이탈 예측", page_icon="📈")
 st.title("고객 이탈 예측 어플리케이션")
 
-# 모델 불러오기기
+# 모델 불러오기
 @st.cache_resource
 def load_model():
     return lgb.Booster(model_file="model/lightgbm_model.txt")
