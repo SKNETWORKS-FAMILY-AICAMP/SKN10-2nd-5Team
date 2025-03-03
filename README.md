@@ -8,10 +8,29 @@
 ## ⭐ 프로젝트 팀
 <br/>
 
-| 이서영 | 경규휘 | 권석현 | 원유형 | 좌민서 |
-| :---: | :---: | :---: | :---: | :---: |
-| 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 |
-| [@Lee Seoyoung](https://github.com/Eseo0) | [@kqe0012](https://github.com/kqe123) | [@seo-droid](https://github.com/seo-droid) | [@uhyeong](uhyeong) | [@INe](https://github.com/INe904) |
+<table style="width: 100%; table-layout: fixed;">
+  <tr>
+    <td style="text-align: center; width: 20%;">이서영</td>
+    <td style="text-align: center; width: 20%;">경규휘</td>
+    <td style="text-align: center; width: 20%;">권석현</td>
+    <td style="text-align: center; width: 20%;">원유형</td>
+    <td style="text-align: center; width: 20%;">좌민서</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
+    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
+    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
+    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 설계</td>
+    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;"><a href="https://github.com/Eseo0">@Lee Seoyoung</a></td>
+    <td style="text-align: center; width: 20%;"><a href="https://github.com/kqe123">@kqe0012</a></td>
+    <td style="text-align: center; width: 20%;"><a href="https://github.com/seo-droid">@seo-droid</a></td>
+    <td style="text-align: center; width: 20%;"><a href="https://github.com/uhyeong">uhyeong</a></td>
+    <td style="text-align: center; width: 20%;"><a href="https://github.com/INe904">@INe</a></td>
+  </tr>
+</table>
 <br/>
 
 ## 📌 프로젝트 개요
@@ -27,8 +46,7 @@
 ### 프로젝트 목적
 <br/>
 
-본 서비스는 통신사의 고객 이탈을 예측하고, 이탈 가능성이 높은 고객을 사전에 식별하여 이탈을 방지하는 전략을 수립하는 것을 목표로 한다.
-이를 통해 통신사는 고객의 만족도를 향상시키고, 이탈률을 감소시킬 수 있다.
+본 서비스는 통신사의 고객 이탈을 예측하고, 이탈 가능성이 높은 고객을 사전에 식별하여 이탈을 방지하는 전략을 수립하는 데 도움을 주는 것을 목표로 한다.<br/>이를 통해 통신사는 고객의 만족도를 향상시키고, 이탈률을 감소시킬 수 있다.
 <br/>
 <br/>
 
@@ -88,7 +106,7 @@
 ### 모델 설계
 <br/>
 
-![](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=white) &nbsp; ![](https://img.shields.io/badge/scikitlearn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white) &nbsp; ![](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) &nbsp; ![](https://img.shields.io/badge/numpy-4D77CF?style=for-the-badge&logo=numpy&logoColor=white)
+![](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=white) &nbsp; ![](https://img.shields.io/badge/numpy-4D77CF?style=for-the-badge&logo=numpy&logoColor=white) &nbsp; ![](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) &nbsp; ![](https://img.shields.io/badge/scikitlearn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
 <br/>
 
 ### 화면 구현
@@ -148,11 +166,11 @@
 ### 메인 페이지
 <br/>
 
-## 💻 ERD
+## 📊 ERD
 <br/>
 
 
-## 💻 모델 설계
+## ⚙️ 모델 설계
 <br/>
 
 
@@ -160,7 +178,7 @@
 <br/>
 
 
-## 💻 개발과정에서 발생한 이슈 및 해결방법
+## 💻 이슈 및 해결방법
 <br/>
 
 
