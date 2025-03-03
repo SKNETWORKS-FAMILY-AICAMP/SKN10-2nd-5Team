@@ -1,55 +1,41 @@
 import numpy as np
 import pandas as pd
-from utils import reset_seeds
-from sklearn.preprocessing import LabelEncoder
+from service.utils import reset_seeds
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split
-from imblearn.combine import SMOTEENN
-def __cleaning_data(df):
-
-    return df
-
-
-def __create_custom_features(df):
-
-    return df
-
-def __smote_data(X,y):
-    # 4. SMOTE 적용
-    sm = SMOTEENN()
-    X_smo, y_smo = sm.fit_resample(X, y)
-    return X_smo,y_smo
 
 def __encode_data(df):
-    le=LabelEncoder()
-    df['Churn']=le.fit_transform(df['Churn'])
-    df['TotalCharges']=pd.to_numeric(df['TotalCharges'],errors='coerce')
+    df['TotalCharges'].replace(' ', 0, inplace=True)
+    df['TotalCharges'] = df['TotalCharges'].astype(float)
 
-
-    numeric_data=df.select_dtypes(include=np.number)
-    categorical_data=df.select_dtypes(exclude=np.number)
-
-    for i in categorical_data.columns:
-        df[i]=le.fit_transform(categorical_data[i])
+    encoder = LabelEncoder()
+    columns = df.select_dtypes(exclude=np.number).columns
+    for col in columns:
+        df[col] = df[col].str.lower()
+        df[col] = encoder.fit_transform(df[col])
+    
     return df
 
+def __scale_data(X_train, X_test):
+    scaler = MinMaxScaler()
 
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    return X_train, X_test
 
 @reset_seeds
 def preprocess_dataset(data):
-    df=data.dropna()
+    data.drop(['customerID', 'gender', 'PhoneService', 'InternetService'], axis=1, inplace=True)
     
-    df = __encode_data(df)
-    
-    
-    
-    
-    y = df["Churn"]
-    X = df.drop(columns=["Churn"])
-    x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
+    data = __encode_data(data)
 
+    X = data.drop(['Churn'], axis=1)
+    y = data['Churn']
+    keys = X.columns
 
-    X_smo, y_smo = __smote_data(x_train, y_train)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, shuffle=True, stratify=y)
 
+    X_train, X_test = __scale_data(X_train, X_test)
 
-
-    return X_smo,x_test,y_smo,y_test
+    return X_train, X_test, y_train, y_test
