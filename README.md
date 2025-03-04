@@ -8,29 +8,12 @@
 ## ⭐ 프로젝트 팀
 <br/>
 
-<table style="width: 100%; table-layout: fixed;">
-  <tr>
-    <td style="text-align: center; width: 20%;"><b>이서영</b></td>
-    <td style="text-align: center; width: 20%;"><b>경규휘</b></td>
-    <td style="text-align: center; width: 20%;"><b>권석현</b></td>
-    <td style="text-align: center; width: 20%;"><b>원유형</b></td>
-    <td style="text-align: center; width: 20%;"><b>좌민서</b></td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-    <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/Eseo0">@Lee Seoyoung</a></td>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/kqe123">@kqe0012</a></td>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/seo-droid">@seo-droid</a></td>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/uhyeong">uhyeong</a></td>
-    <td style="text-align: center; width: 20%;"><a href="https://github.com/INe904">@INe</a></td>
-  </tr>
-</table>
+| **이서영** | **경규휘** | **권석현** | **원유형** | **좌민서** |
+| :---: | :---: | :---: | :---: | :---: |
+| 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 |
+| [@Lee Seoyoung](https://github.com/Eseo0) | [@kqe0012](https://github.com/kqe123) | [@seo-droid](https://github.com/seo-droid) | [@uhyeong](https://github.com/uhyeong) | [@INe](https://github.com/INe904) |
+
+<br/>
 <br/>
 
 ## 📌 프로젝트 개요
@@ -166,121 +149,32 @@
 <br/>
 <br/>
 
-## 데이터
+## 초기 데이터 정보
 <br/>
 
-<table style="width: 100%; table-layout: fixed;">
-  <tr>
-    <th style="text-align: center; width: 20%;">column</td>
-    <th style="text-align: center; width: 60%;">description</td>
-    <th style="text-align: center; width: 20%;">data type</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">customerID</td>
-    <td style="text-align: center; width: 60%;">고객 ID</td>
-    <td style="text-align: center; width: 20%;">object</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">gender</td>
-    <td style="text-align: center; width: 60%;">성별</td>
-    <td style="text-align: center; width: 20%;">object<br/>Male / Female</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">SeniorCitizen</td>
-    <td style="text-align: center; width: 60%;">고객의 노인 여부</td>
-    <td style="text-align: center; width: 20%;">int64<br/>1 / 0</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">Partner</td>
-    <td style="text-align: center; width: 60%;">고객의 파트너 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">Dependents</td>
-    <td style="text-align: center; width: 60%;">고객의 부양가족 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">tenure</td>
-    <td style="text-align: center; width: 60%;">고객의 가입 개월 수</td>
-    <td style="text-align: center; width: 20%;">int64</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">PhoneService</td>
-    <td style="text-align: center; width: 60%;">전화 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">MultipleLines</td>
-    <td style="text-align: center; width: 60%;">다중 회선 유무</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No phone service</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">InternetService</td>
-    <td style="text-align: center; width: 60%;">인터넷 서비스 종류</td>
-    <td style="text-align: center; width: 20%;">object<br/>DSL / Fiber optic / No</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">OnlineSecurity</td>
-    <td style="text-align: center; width: 60%;">온라인 보안 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">OnlineBackup</td>
-    <td style="text-align: center; width: 60%;">온라인 백업 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">DeviceProtection</td>
-    <td style="text-align: center; width: 60%;">기기 보호 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">TechSupport</td>
-    <td style="text-align: center; width: 60%;">기술 지원 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">StreamingTV</td>
-    <td style="text-align: center; width: 60%;">스트리밍 TV 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">StreamingMovies</td>
-    <td style="text-align: center; width: 60%;">스트리밍 영화 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">Contract</td>
-    <td style="text-align: center; width: 60%;">고객의 계약 기간</td>
-    <td style="text-align: center; width: 20%;">object<br/>Month-to-month / One year / Two year</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">PaperlessBiling</td>
-    <td style="text-align: center; width: 60%;">무서류 청구서 사용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">PaymentMethod</td>
-    <td style="text-align: center; width: 60%;">고객의 결제 수단</td>
-    <td style="text-align: center; width: 20%;">object<br/>Electronic check / Mailed check<br/>/ Bank transfer(automatic) / Credit card (automatic)</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">MonthlyCharges</td>
-    <td style="text-align: center; width: 60%;">월 청구 금액</td>
-    <td style="text-align: center; width: 20%;">float64</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">TotalCharges</td>
-    <td style="text-align: center; width: 60%;">총 청구 금액</td>
-    <td style="text-align: center; width: 20%;">object</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 20%;">Churn</td>
-    <td style="text-align: center; width: 60%;">고객의 이탈 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
-  </tr>
-</table>
+| Column | Description | Data Type |
+| ---: | :--- | :--- |
+| customerID | 고객 ID | object |
+| gender | 성별 | object<br/>Male / Female |
+| SeniorCitizen | 고객의 노인 여부 | int64<br/>1 / 0 |
+| Partner | 고객의 파트너 여부 | object<br/>Yes / No |
+| Dependents | 고객의 부양가족 여부 | object<br/>Yes / No |
+| tenure | 고객의 통신사 가입 기간(개월) | int64 |
+| PhoneService | 전화 서비스 이용 여부 | object<br/>Yes / No |
+| MultipleLines | 다중 회선 유무 | object<br/>Yes / No / No phone service |
+| InternetService | 인터넷 서비스 종류 | object<br/>DSL / Fiber optic / No |
+| OnlineSecurity | 온라인 보안 서비스 이용 여부 | object<br/>Yes / No / No internet service |
+| OnlineBackup | 온라인 백업 서비스 이용 여부 | object<br/>Yes / No / No internet service |
+| DeviceProtection | 기기 보호 서비스 이용 여부 | object<br/>Yes / No / No internet service |
+| TechSupport | 기술 지원 서비스 이용 여부 | object<br/>Yes / No / No internet service |
+| StreamingTV | 스트리밍 TV 서비스 이용 여부 | object<br/>Yes / No / No internet service |
+| StreamingMovies | 스트리밍 영화 서비스 이용 여부 | object<br/>Yes / No / No internet service |
+| Contract |고객의 계약 기간  | object<br/>Month-to-month / One year / Two year |
+| PaperlessBiling | 무서류 청구서 사용 여부 | object<br/>Yes / No |
+| PaymentMethod | 고객의 결제 수단 | object<br/>Electronic check / Mailed check<br/>/ Bank transfer(automatic) / Credit card (automatic) |
+| MonthlyCharges | 월 청구 금액 | float64 |
+| TotalCharges | 총 청구 금액 | object |
+| Churn | 고객의 이탈 여부 | object<br/>Yes / No |
 <br/>
 <br/>
 
@@ -300,7 +194,7 @@
 <br/>
 <br/>
 
-## 📊 Machine Learning - EDA
+## 📊 EDA
 <br/>
 
 ### Data Analyze
@@ -442,6 +336,14 @@
 <br/>
 
 <img src='images/Model7.png' width='600' height='auto'>
+<br/>
+<br/>
+
+## ⚙️ Deep Learning - 모델 설계
+<br/>
+
+
+
 <br/>
 <br/>
 
