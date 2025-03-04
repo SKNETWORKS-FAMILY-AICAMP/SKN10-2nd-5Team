@@ -169,7 +169,7 @@
 ## 데이터
 <br/>
 
-<table style="width: 100%; table-layout: fixed;">
+<table style="width: 100%;">
   <tr>
     <td style="text-align: center; width: 20%;">customerID</td>
     <td style="text-align: center; width: 60%;">고객 ID</td>
