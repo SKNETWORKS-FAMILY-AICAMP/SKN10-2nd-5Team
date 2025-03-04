@@ -231,8 +231,9 @@
 <img src='images/Cleaning_1.png' width='800' height='auto'>
 <br/>
 
-- **Churn**의 컬럼 값을 **1 / 0**으로 변환한다.
-- **\'TotalCharges\'**의 타입을 숫자형으로 변환한다.
+- **'Churn'**의 컬럼 값을 **1 / 0**으로 변환한다.
+
+- **'TotalCharges'**의 타입을 숫자형으로 변환한다.
 <br/>
 <img src='images/Cleaning_2.png' width='800' height='auto'>
 <br/>
