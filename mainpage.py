@@ -2,11 +2,12 @@ import pickle
 import streamlit as st
 import pandas as pd
 import numpy as np
-import streamlit as st
 import matplotlib.pyplot as plt
-import streamlit as st
 from matplotlib import font_manager
 import lightgbm as lgb
+import joblib
+
+# ✅ 전처리 모듈 가져오기
 from service.preprocess import *
 
 # 한글 폰트 설정 (Windows의 경우)
@@ -14,176 +15,103 @@ font_path = 'C:/Windows/Fonts/malgun.ttf'  # 윈도우에서는 'malgun.ttf' 폰
 font_prop = font_manager.FontProperties(fname=font_path)
 plt.rcParams['font.family'] = font_prop.get_name()
 
-st.set_page_config(page_title="통신사 고객 이탈 예측 서비스", page_icon="📱")
-st.title("📱 통신사 고객 이탈 예측 서비스")
-st.write('고객의 정보를 입력하세요.')
-st.divider()
+st.set_page_config(page_title="고객 이탈 예측", page_icon="📈")
+st.title("📞 고객 이탈 예측")
+st.write("고객 정보를 입력하면 고객의 이탈 확률을 예측할 수 있습니다.")
+st.markdown("---")
 
-customer_id = st.text_input('고객 ID')
+# CSV 파일 로드
+df = read_csv()
 
-col1, col2 = st.columns(2)
-with col1:
-    gender = st.radio('성별', ['Male', 'Female'], horizontal=True)
-with col2:
-    senior = st.radio('노인 여부', ['Yes', 'No'], horizontal=True)
+# ✅ TotalCharges의 공백을 NaN으로 변환 후, 숫자로 변환
+if "TotalCharges" in df.columns:
+    df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
+    df["TotalCharges"].fillna(df["TotalCharges"].median(), inplace=True)  # 중앙값으로 대체
 
-col1, col2 = st.columns(2)
-with col1:
-    partner = st.radio('파트너 유무', ['Yes', 'No'], horizontal=True)
-with col2:
-    dependents = st.radio('부양 가족 유무', ['Yes', 'No'], horizontal=True)
+# 사용 가능한 피처 목록 가져오기
+numerical_features = df.select_dtypes(include=['int64', 'float64']).columns.tolist()
+categorical_features = df.select_dtypes(include=['object']).columns.tolist()
 
-tenure = st.slider('가입 기간', 0, 72, 0)
+if "TotalCharges" in categorical_features:
+    categorical_features.remove("TotalCharges")
+    numerical_features.append("TotalCharges")
 
-st.divider()
+if "SeniorCitizen" in numerical_features:
+    numerical_features.remove("SeniorCitizen")
+    categorical_features.append("SeniorCitizen")
 
-col1, col2 = st.columns(2)
-with col1:
-    phone_service = st.radio('전화 서비스', ['Yes', 'No'], horizontal=True)
-with col2:
-    multiple_lines = st.radio('다중 회선 서비스', ['Yes', 'No', 'No Phone Service'], horizontal=True)
+hidden_features = ["customerID", "Churn"]
 
-st.divider()
+# UI에서 보이지 않도록 필터링된 피처 목록
+visible_numerical_features = [f for f in numerical_features if f not in hidden_features]
+visible_categorical_features = [f for f in categorical_features if f not in hidden_features]
 
-internet_service = st.radio('인터넷 서비스', ['DSL', 'Fiber Optic', 'No'], horizontal=True)
+# 사용자 입력 받기
+user_input = {}
 
-col1, col2 = st.columns(2)
-with col1:
-    online_security = st.radio('온라인 보안 서비스', ['Yes', 'No', 'No Internet Service'], horizontal=True)
-with col2:
-    online_backup = st.radio('온라인 백업 서비스', ['Yes', 'No', 'No Internet Service'], horizontal=True)
+col1, col2, col3 = st.columns(3)
+for i, feature in enumerate(visible_numerical_features):
+    min_val = int(df[feature].min())
+    max_val = int(df[feature].max())
+    avg_val = int(df[feature].mean())
+    if i % 3 == 0:
+        user_input[feature] = col1.slider(feature, min_val, max_val, avg_val)
+    elif i % 3 == 1:
+        user_input[feature] = col2.slider(feature, min_val, max_val, avg_val)
+    else:
+        user_input[feature] = col3.slider(feature, min_val, max_val, avg_val)
 
-col1, col2 = st.columns(2)
-with col1:
-    device_protection = st.radio('기기 보호 서비스', ['Yes', 'No', 'No Internet Service'], horizontal=True)
-with col2:
-    tech_support = st.radio('기술 지원 서비스', ['Yes', 'No', 'No Internet Service'], horizontal=True)
+st.markdown("---")
 
-col1, col2 = st.columns(2)
-with col1:
-    streaming_tv = st.radio('스트리밍 TV 서비스', ['Yes', 'No', 'No Internet Service'], horizontal=True)
-with col2:
-    streaming_movie = st.radio('스트리밍 영화 서비스', ['Yes', 'No', 'No Internet Service'], horizontal=True)
+num_cols = 4
+rows = [visible_categorical_features[i : i + num_cols] for i in range(0, len(visible_categorical_features), num_cols)]
 
-st.divider()
+for row in rows:
+    cols = st.columns(len(row))
+    for i, feature in enumerate(row):
+        unique_values = [0, 1] if feature == "SeniorCitizen" else df[feature].dropna().unique().tolist()
+        user_input[feature] = cols[i].selectbox(feature, unique_values)
 
-contract = st.radio('계약 기간', ['Month to Month', 'One Year', 'Two Year'], horizontal=True)
-
-paperless_biling = st.radio('무서류 청구서 여부', ['Yes', 'No'], horizontal=True)
-
-payment_method = st.radio('결제 수단', ['Electronic Check', 'Mailed Check', 'Bank Transfer (Automatic)', 'Credit Card (Automatic)'], horizontal=True)
-
-col1, col2 = st.columns(2)
-with col1:
-    monthly_charges = st.number_input('월 청구 금액', min_value=0.0, step=1.0)
-with col2:
-    total_charges = st.number_input('총 청구 금액', min_value=0.0, step=1.0)
-
-st.divider()
-
+# 모델 로드 함수
 @st.cache_resource
 def load_model():
-    # return lgb.Booster(model_file="model/lightgbm_model.txt")
-    with open('model/lightgbm_model.pkl', 'rb') as f:
-        model = pickle.load(f)
-    
-    return model
+    return joblib.load("model/lightgbm_model.pkl")
 
+# 모델 불러오기
+model = load_model()
 
-def preprocess_input_data(inputs):
-    data = {
-        'customerID': inputs['customerID'],
-        'gender': [1 if inputs['gender'] == 'Yes' else 0],
-        'SeniorCitizen': [1 if inputs['SeniorCitizen'] == 'Yes' else 0],
-        'Partner': inputs['Partner'],
-        'Dependents': inputs['Dependents'],
-        'tenure': inputs['tenure'],
-        'PhoneService': inputs['PhoneService'],
-        'MultipleLines': inputs['MultipleLines'],
-        'InternetService': inputs['InternetService'],
-        'OnlineSecurity': inputs['OnlineSecurity'],
-        'OnlineBackup': inputs['OnlineBackup'],
-        'DeviceProtection': inputs['DeviceProtection'],
-        'TechSupport': inputs['TechSupport'],
-        'StreamingTV': inputs['StreamingTV'],
-        'StreamingMovies': inputs['StreamingMovies'],
-        'Contract': inputs['Contract'],
-        'PaperlessBilling': inputs['PaperlessBilling'],
-        'PaymentMethod': inputs['PaymentMethod'],
-        'MonthlyCharges': inputs['MonthlyCharges'],
-        'TotalCharges': inputs['TotalCharges']
-    }
+if st.button("예측하기"):
+    input_df = pd.DataFrame([user_input])
 
-    df = pd.DataFrame(data)
+    # ✅ UI에서 숨겼던 customerID와 Churn을 임시 추가
+    input_df["customerID"] = "0000-AAAAA"  # 임의의 ID 값
+    input_df["Churn"] = 0  # 전처리 과정에서 필요하므로 임시 추가
 
-    df = binary_categorical_to_numeric(df)
+    # 전처리 ========================================================================================================================================================================
+    # 이진 범주형을 0 또는 1로 변환
+    data = binary_categorical_to_numeric(input_df) 
 
-    df['notSecurityBackup'] = df.apply(lambda x : 1 if x['OnlineBackup'] == "No" and x['OnlineSecurity'] == "No" else 0, axis=1) # 보안, 백업 서비스를 사용 안하면 1
-    df['isAlone'] = df.apply(lambda x : 1 if x['Partner'] == 0 and x['Dependents'] == 0 else 0, axis=1) # 혼자인지 여부
-    df['notTechSupport'] = df.apply(lambda x : 1 if x['TechSupport'] == "No" and x['Contract'] == "Month-to-month" else 0, axis=1) # 기술지원 x, 계약기간 짧으면 1
-    df["new_avg_charges"] = df["TotalCharges"] / (df["tenure"] + 1)
-    df["new_increase"] = df["new_avg_charges"] / df["MonthlyCharges"]
+    # Churn과 TotalCharges를 전처리함.
+    data['Churn'] = data['Churn'].apply(lambda x : 1 if x == "Yes" else 0 )
+    data['TotalCharges'] = data['TotalCharges'].replace(" ", "0")  # 공백을 '0'으로 변환
+    data['TotalCharges'] = pd.to_numeric(data['TotalCharges'])  # 숫자로 변환
 
-    df = drop_columns(df)
-    df = str_to_category(df)
+    # 컬럼 추가
+    data['notSecurityBackup'] = data.apply(lambda x : 1 if x['OnlineBackup'] == "No" and x['OnlineSecurity'] == "No" else 0, axis=1) # 보안, 백업 서비스를 사용 안하면 1
+    data['isAlone'] = data.apply(lambda x : 1 if x['Partner'] == 0 and x['Dependents'] == 0 else 0, axis=1) # 혼자인지 여부
+    data['notTechSupport'] = data.apply(lambda x : 1 if x['TechSupport'] == "No" and x['Contract'] == "Month-to-month" else 0, axis=1) # 기술지원 x, 계약기간 짧으면 1
+    data["new_avg_charges"] = data["TotalCharges"] / (data["tenure"] + 1)
+    data["new_increase"] = data["new_avg_charges"] / data["MonthlyCharges"]
 
-    return df
+    # 컬럼 삭제
+    data = drop_columns(data)
+    data.drop(columns=["Churn"], axis=1, inplace=True)
 
-if st.button('예측하기'):
-    inputs = {
-        'customerID': customer_id,
-        'gender': gender,
-        'SeniorCitizen': senior,
-        'Partner': partner,
-        'Dependents': dependents,
-        'tenure': tenure,
-        'PhoneService': phone_service,
-        'MultipleLines': multiple_lines,
-        'InternetService': internet_service,
-        'OnlineSecurity': online_security,
-        'OnlineBackup': online_backup,
-        'DeviceProtection': device_protection,
-        'TechSupport': tech_support,
-        'StreamingTV': streaming_tv,
-        'StreamingMovies': streaming_movie,
-        'Contract': contract,
-        'PaperlessBilling': paperless_biling,
-        'PaymentMethod': payment_method,
-        'MonthlyCharges': monthly_charges,
-        'TotalCharges': total_charges
-    }
+    # str 컬럼을 category로 변환
+    data = str_to_category(data)
 
-    model = load_model()
+    # 예측 수행========================================================================================================================================================================
+    pred_prob = model.predict_proba(data)[:,1]
+    pred_class = (pred_prob >= 0.5).astype(int)
 
-    input_df = preprocess_input_data(inputs)
-    prediction = model.predict(input_df)
-    st.write(prediction)
-    st.write(input_df)
-
-    st.sidebar.title('고객 이탈 여부')
-
-    st.sidebar.markdown(f'<h3 style="color: {"red" if prediction >= 0.5 else "blue"}; font-weight: bold;">고객 {"이탈" if prediction >= 0.5 else "유지"}</h3>', unsafe_allow_html=True)
-
-    st.sidebar.divider()
-
-    st.sidebar.subheader('고객 정보')
-    st.sidebar.markdown(f'1. **고객 ID** - {customer_id}')
-    st.sidebar.markdown(f'2. **성별** - {gender}')
-    st.sidebar.markdown(f'3. **노인 여부** - {senior}')
-    st.sidebar.markdown(f'4. **파트너 유무** - {partner}')
-    st.sidebar.markdown(f'5. **부양 가족 유무** - {dependents}')
-    st.sidebar.markdown(f'6. **가입 기간** - {tenure}')
-    st.sidebar.markdown(f'7. **전화 서비스** - {phone_service}')
-    st.sidebar.markdown(f'8. **다중 회선 서비스** - {multiple_lines}')
-    st.sidebar.markdown(f'9. **인터넷 서비스** - {internet_service}')
-    st.sidebar.markdown(f'10. **온라인 보안 서비스** - {online_security}')
-    st.sidebar.markdown(f'11. **온라인 백업 서비스** - {online_backup}')
-    st.sidebar.markdown(f'12. **기기 보호 서비스** - {device_protection}')
-    st.sidebar.markdown(f'13. **기술 지원 서비스** - {tech_support}')
-    st.sidebar.markdown(f'14. **스트리밍 TV 서비스** - {streaming_tv}')
-    st.sidebar.markdown(f'15. **스트리밍 영화 서비스** - {streaming_movie}')
-    st.sidebar.markdown(f'16. **계약 기간** - {contract}')
-    st.sidebar.markdown(f'17. **무서류 청구서 여부** - {paperless_biling}')
-    st.sidebar.markdown(f'18. **결제 수단** - {payment_method}')
-    st.sidebar.markdown(f'19. **월 청구 금액** - {monthly_charges}')
-    st.sidebar.markdown(f'20. **총 청구 금액** - {total_charges}')
+    st.markdown(f"### 고객 이탈 확률: {pred_prob[0]:.4f}")
