@@ -448,6 +448,19 @@
 ## 📌 프로젝트 최종 결과
 <br/>
 
+### Mainpage
+<br/>
+
+<img src='images/최종결과_EDA1.png' width='800' height='auto'>
+<br/>
+
+### EDA
+<br/>
+
+<img src='images/최종결과_EDA2.png' width='800' height='auto'>
+<br/>
+<br/>
+
 
 ## 💻 이슈 및 해결방법
 <br/>
