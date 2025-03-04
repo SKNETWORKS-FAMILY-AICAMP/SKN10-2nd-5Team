@@ -352,9 +352,59 @@
 ## ⚙️ Deep Learning - 모델 설계
 <br/>
 
+### 모델 선정 이유
+<br/>
 
+| 모델 | 장점 | 단점 | 사용 예시 |
+| :---: | :--- | :--- | :---:|
+| MLP<br/>(다층 퍼셉트론) | 단순하고 범용적임<br/>구현이 쉬움<br/>테이블 데이터에 적합 | 이미지/시계열 데이터에 부적합<br/>과적합 위험 | Tabular Data<br/>(고객, 금융, 의료 등) |
+| CNN<br/>(합성곱 신경망) | 이미지/공간적 데이터에 적합<br/>특성 추출 능력 | 테이블 데이터에 부적합<br/>학습 비용 높음 | 이미지 분류<br/>객체 탐지 |
+| RNN / LSTM / GRU | 시계열/순차적 데이터에 적합 | 긴 문맥을 기억하기 어려움<br/>학습 속도 느림 | 텍스트 분석<br/>자연어 처리<br/>음성 인식 |
+| 트랜스포머<br/>(BERT, GPT) | 장기 의존성 학습 가능<br/>다양한 데이터 처리 가능 | 학습 비용이 높음<br/>큰 데이터 필요 | 텍스트 생성<br/>기계 번역<br/>챗봇<br/>추천 시스템 |
 
 <br/>
+<br/>
+
+### 모델 구조
+<br/>
+
+- **MLP** 모델
+<br/>
+
+<img src='images/MLP_구조.png' width='400' height='auto'>
+<br/>
+<br/>
+
+### Optimizer
+<br/>
+
+- **Optimizer** 선정 이유
+<br/>
+
+| Optimizer | 장점 | 단점 | 현재 데이터 적합도 |
+| :---: | :--- | :--- | :--- |
+| Adam | 빠른 학습<br/>불균형 데이터에 강함 | 과적합 가능성 | 빠른 수렴<br/>불균형 대응 |
+| SGD | 일반화 성능 좋음<br/>메모리 효율적 | 학습 속도 느림<br/>학습률 조정 필요 | 학습률 최적화 필수 |
+
+<br/>
+
+- **Adam Optimizer**
+<br/>
+
+<img src='images/optimizer.png' width='400' height='auto'>
+<br/>
+<br/>
+
+### Model Training & Testing
+<br/>
+
+**1. 정확도: 97%**
+<br/>
+
+<img src='images/DL_result.png' width='600' height='auto'>
+<br/>
+
+<img src='images/DL_loss_accuracy.png' width='800' height='auto'>
 <br/>
 
 ## 📌 프로젝트 최종 결과
