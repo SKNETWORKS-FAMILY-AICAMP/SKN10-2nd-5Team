@@ -36,8 +36,6 @@ gender와 PhoneService가 Churn(이탈 여부)와 관련이 적다는 것을 알
 
 ## Data Cleaning
 
-**히트맵**
-
 - 컬럼값이 Yes, No인 컬럼들을 1과 0으로 변환
 
 <img src="image/Cleaning_1.png" width="700" height="auto">

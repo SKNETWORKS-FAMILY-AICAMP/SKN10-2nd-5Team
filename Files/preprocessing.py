@@ -60,7 +60,8 @@ def drop_columns(df) :
 
 # lightGBM은 str를 인식 못하므로 category로 변환하는 함수 
 def str_to_category(df) :
-  columns = ['InternetService' ,'MultipleLines', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport','StreamingMovies', 'Contract', 'PaymentMethod']
+  columns = ['InternetService' ,'MultipleLines', 'OnlineSecurity', 'OnlineBackup',
+            'DeviceProtection', 'TechSupport','StreamingMovies', 'Contract', 'PaymentMethod']
   for col in columns :
     df[col] = df[col].astype("category")
   return df
