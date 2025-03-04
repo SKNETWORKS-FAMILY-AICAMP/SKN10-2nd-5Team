@@ -59,6 +59,7 @@ gender와 PhoneService가 Churn(이탈 여부)와 관련이 적다는 것을 알
 
 ## Scaling, Encoding
 - 내가 쓴 모델은 lightGBM이라 할 필요는 없어서 하지 않았다.
+- 데이터가 불균형적이라 샘플링을 시도해봤지만 테스트 점수가 더 떨어지는 현상이 발생해 샘플링 하지 않았다.
 
 ## Model 학습, 평가
 
