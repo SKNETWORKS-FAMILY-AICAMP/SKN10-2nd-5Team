@@ -78,11 +78,11 @@ gender와 PhoneService가 Churn(이탈 여부)와 관련이 적다는 것을 알
 
 <img src="image/Model4.png" width="500" height="auto">
 
-- 테스트 기준 정확도는 81%가 나온다.
+- 교차검증 10번 시행 시 평균 80%가 나온다.
 
 <img src="image/Model5.png" width="500" height="auto">
 
-- 각종 지표는 다음과 같이 나온다.
+- 테스트 점수가 81%가 나온다.
 
 <img src="image/Model6.png" width="500" height="auto">
 
