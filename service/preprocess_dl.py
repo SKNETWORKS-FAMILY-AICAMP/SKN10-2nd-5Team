@@ -21,7 +21,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler  #scaling
 from imblearn.over_sampling import SMOTE #smote
 from sklearn.utils.class_weight import compute_class_weight #scaling- weight
-
+from sklearn.preprocessing import OneHotEncoder
 import numpy as np
 import pandas as pd
 
@@ -50,7 +50,6 @@ def dl_set_seed(seed=42):
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
-
 
 
 def create_custom_features(df):
@@ -100,33 +99,32 @@ def cleaning_data(df):
 
 def encode_data(df):
     df = df.copy()
-
     #  Churn이 문자열이면 숫자로 변환
     if 'Churn' in df.columns and df['Churn'].dtype == 'object':
         df['Churn'] = df['Churn'].map({'Yes': 1, 'No': 0})
 
     #  범주형 변수 원-핫 인코딩
-    categorical_cols = df.select_dtypes(include=['object']).columns.tolist()
-    df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
+    # categorical_cols = df.select_dtypes(include=['object']).columns.tolist()
+    enc_cols = df.select_dtypes(include=['object']).columns.tolist()
+    normal_cols = list(set(df.columns) - set(enc_cols))
+    enc = OneHotEncoder()
 
+    tmp = pd.DataFrame(
+    enc.fit_transform(df[enc_cols]).toarray(),
+    columns = enc.get_feature_names_out()
+    )
+    df = pd.concat(   
+        [df[normal_cols].reset_index(drop=True), tmp.reset_index(drop=True)]
+    , axis=1
+    )
+    
+
+    #df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
     return df
 
+
+
 def smote_data(df: pd.DataFrame, target_column: str = 'Churn', sampling_strategy: float = 0.5):
-    """
-    데이터 전처리를 수행하는 함수.
-    
-    1. X, y 분리
-    2. 불균형 데이터 처리 (SMOTEENN 적용)
-    
-    Parameters:
-    - df (pd.DataFrame): 원본 데이터프레임
-    - target_column (str): 타겟 컬럼 이름 (기본값 'Churn')
-    - sampling_strategy (float): SMOTEENN의 샘플링 비율 (기본값 0.5)
-    
-    Returns:
-    - X_processed (np.ndarray): 전처리된 X 데이터
-    - y_processed (np.ndarray): 전처리된 y 데이터
-    """
     # 1. X, y 분리
     if target_column in df.columns:
         X = df.drop(columns=[target_column]).values.astype(np.float32)
