@@ -23,7 +23,7 @@ import koreanize_matplotlib  # matplotlib 한글화
 import easydict
 
 from service.utils import reset_seeds
-# from utils import reset_seeds
+# from utils import reset_seeds  # run.py 실행시
 
 warnings.filterwarnings(action='ignore')
 

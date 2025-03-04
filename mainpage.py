@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 import lightgbm as lgb
 import joblib
+from service.preprocess_dl import *
+from service.process_dl import * 
 
 # ✅ 전처리 모듈 가져오기
 from service.preprocess import *
@@ -72,22 +74,7 @@ for row in rows:
         unique_values = [0, 1] if feature == "SeniorCitizen" else df[feature].dropna().unique().tolist()
         user_input[feature] = cols[i].selectbox(feature, unique_values)
 
-# 모델 로드 함수
-@st.cache_resource
-def load_model():
-    return joblib.load("model/lightgbm_model.pkl")
-
-# 모델 불러오기
-model = load_model()
-
-if st.button("예측하기"):
-    input_df = pd.DataFrame([user_input])
-
-    # ✅ UI에서 숨겼던 customerID와 Churn을 임시 추가
-    input_df["customerID"] = "0000-AAAAA"  # 임의의 ID 값
-    input_df["Churn"] = 0  # 전처리 과정에서 필요하므로 임시 추가
-
-    # 전처리 ========================================================================================================================================================================
+def preprocess_ml(input_df):
     # 이진 범주형을 0 또는 1로 변환
     data = binary_categorical_to_numeric(input_df) 
 
@@ -110,8 +97,73 @@ if st.button("예측하기"):
     # str 컬럼을 category로 변환
     data = str_to_category(data)
 
-    # 예측 수행========================================================================================================================================================================
-    pred_prob = model.predict_proba(data)[:,1]
-    pred_class = (pred_prob >= 0.5).astype(int)
+    return data
 
-    st.markdown(f"### 고객 이탈 확률: {pred_prob[0]:.4f}")
+def preprocess_dl(input_df):
+    # 1. 데이터 불러오기
+    df = input_df
+    df = create_custom_features(df)
+    df = cleaning_data(df) 
+    df = encode_data(df)
+
+    return df
+
+# 모델 설정
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# 모델 로드 함수
+@st.cache_resource
+def load_model(model_stat: str):
+    if model_stat == "ML":
+        return joblib.load("model/lightgbm_model.pkl")
+    elif model_stat == "DL":
+        input_size = 39  # 현재 데이터 크기에 맞춰 조정
+        output_size = 2  # 이진 분류 모델이라면 2
+        hidden_size=32
+
+        model = MultiModel(input_size=input_size, out_size=output_size, hidden_size=hidden_size)
+        model.load_state_dict(torch.load("model/best_model.pth", map_location=device))  
+        model.eval()
+        return model
+    else:
+        return None
+
+# 모델 선택하기
+model_stat = "DL"
+
+# 모델 불러오기
+model = load_model(model_stat)
+
+if st.button("예측하기"):
+    input_df = pd.DataFrame([user_input])
+
+    # ✅ UI에서 숨겼던 customerID와 Churn을 임시 추가
+    input_df["customerID"] = "0000-AAAAA"  # 임의의 ID 값
+    input_df["Churn"] = 0  # 전처리 과정에서 필요하므로 임시 추가
+
+    # 전처리 및 예측 
+    if model_stat == "ML":
+        data = preprocess_ml(input_df)
+        
+        pred_prob = model.predict_proba(data)[:,1]
+        pred_class = (pred_prob >= 0.5).astype(int)
+        
+        st.markdown(f"### 고객 이탈 확률: {pred_prob[0]:.4f}")
+
+    elif model_stat == "DL":
+        data = preprocess_dl(input_df)
+
+        # 🔹 전처리 후 feature 개수 확인
+        print(f"전처리된 데이터 shape: {data.shape}")  # (1, feature 개수) 확인
+        if data.shape[1] != 39:
+            st.error(f"입력 데이터 크기 불일치: {data.shape[1]}개 feature가 감지됨. 39개가 필요합니다.")
+        else:
+            # DataFrame → PyTorch Tensor 변환
+            data_tensor = torch.tensor(data.values, dtype=torch.float32).to(device)
+
+            # 모델 예측 수행
+            with torch.no_grad():
+                outputs = model(data_tensor)
+                _, predictions = torch.max(outputs, 1)
+
+            st.markdown(f"### 예측 결과: {predictions.cpu().numpy()[0]}")
