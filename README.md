@@ -10,7 +10,8 @@
 
 | **이서영** | **경규휘** | **권석현** | **원유형** | **좌민서** |
 | :---: | :---: | :---: | :---: | :---: |
-| 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 | 모델 설계<br/>화면 구현 |
+| **팀장** | 팀원 | 팀원 | 팀원 | 팀원 |
+| 모델 설계 - ML<br/>(GradientBoost)<br/>화면 구현 | 모델 설계 - ML<br/>(LightGBM)<br/> EDA | 모델 설계 - DL | 모델 설계 - ML<br/>(Voting)<br/>화면 설계 | 모델 설계 - ML<br/>(XGBoost)<br/>화면 구현 |
 | [@Lee Seoyoung](https://github.com/Eseo0) | [@kqe0012](https://github.com/kqe123) | [@seo-droid](https://github.com/seo-droid) | [@uhyeong](https://github.com/uhyeong) | [@INe](https://github.com/INe904) |
 
 <br/>
@@ -37,7 +38,7 @@
 <br/>
 
 **1. 고객 이탈 문제 해결**
-- 통신사에서는 고객의 이탈이 발생할 경우, 새로운 고객 유치에 드는 비용이 더 크기 때문에, 기존 고객의 유지를 강화하는 것이 중요하다.
+- 통신사에서는 고객의 이탈이 발생할 경우, 새로운 고객 유치에 드는 비용이 더 크기 때문에, 기존 고객을 유지하는 것이 중요하다.
 <br/>
 
 **2. 경쟁이 치열한 시장 환경**
@@ -57,7 +58,7 @@
 <br/>
 
 **2. 예측 모델 개발**
-- 머신러닝 및 통계적 기법을 활용하여 고객의 이탈 가능성을 예측하는 모델을 구축한다. 이를 통해 고객의 행동을 분석하고, 이탈을 사전에 감지할 수 있다.
+- 머신러닝 및 딥러닝, 통계적 기법을 활용하여 고객의 이탈 가능성을 예측하는 모델을 구축한다. 이를 통해 고객의 행동을 분석하고, 이탈을 사전에 감지할 수 있다.
 <br/>
 <br/>
 
@@ -69,7 +70,7 @@
 <br/>
 
 **2. 고객 만족도 향상**
-- 고객의 불만이나 요구를 사전에 파악하고, 적절한 조치를 취함으로써 고객 만족도를 높일 수 있다.
+- 고객의 불만이나 요구를 사전에 파악하고, 적절한 조치를 취함으로써 고객의 만족도를 높일 수 있다.
 <br/>
 
 **3. 통신사의 경쟁력 강화**
@@ -89,19 +90,19 @@
 ### 모델 설계
 <br/>
 
-![](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=white) &nbsp; ![](https://img.shields.io/badge/numpy-4D77CF?style=for-the-badge&logo=numpy&logoColor=white) &nbsp; ![](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) &nbsp; ![](https://img.shields.io/badge/scikitlearn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white) &nbsp; ![](https://img.shields.io/badge/numpy-013243?style=for-the-badge&logo=numpy&logoColor=white) &nbsp; ![](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) &nbsp; ![](https://img.shields.io/badge/scikitlearn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
 <br/>
 
 ### 화면 구현
 <br/>
 
-![](https://img.shields.io/badge/streamlit-FF0000?style=for-the-badge&logo=streamlit&logoColor=white)
+![](https://img.shields.io/badge/streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 <br/>
 
 ### 버전 관리 및 협업
 <br/>
 
-![](https://img.shields.io/badge/github-000000?style=for-the-badge&logo=github&logoColor=white) &nbsp; ![](https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)
+![](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white) &nbsp; ![](https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white) &nbsp; ![](https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)
 <br/>
 <br/>
 
@@ -138,43 +139,54 @@
 <br/>
 
 **모델 생성 및 정확도 계산**
+
+- 실행되지 않을 경우, service/preprocess.py의 `from service.utils import reset_seeds
+`을 주석처리 하고, `from utils import reset_seeds`의 주석을 해제하여 실행한다.
+
 ```python
     python service/run.py
 ```
 
+<br/>
+
 #### 고객 예측 서비스
+
+- 실행되지 않을 경우, service/preprocess.py의 `from utils import reset_seeds
+`을 주석처리 하고, `from service.utils import reset_seeds`의 주석을 해제하여 실행한다다.
+
 ```python
     streamlit run mainpage.py
 ```
+
 <br/>
 <br/>
 
 ## 초기 데이터 정보
 <br/>
 
-| Column | Description | Data Type |
+| **Column** | **Description** | **Data Type** |
 | ---: | :--- | :--- |
-| customerID | 고객 ID | object |
-| gender | 성별 | object<br/>Male / Female |
-| SeniorCitizen | 고객의 노인 여부 | int64<br/>1 / 0 |
-| Partner | 고객의 파트너 여부 | object<br/>Yes / No |
-| Dependents | 고객의 부양가족 여부 | object<br/>Yes / No |
-| tenure | 고객의 통신사 가입 기간(개월) | int64 |
-| PhoneService | 전화 서비스 이용 여부 | object<br/>Yes / No |
-| MultipleLines | 다중 회선 유무 | object<br/>Yes / No / No phone service |
-| InternetService | 인터넷 서비스 종류 | object<br/>DSL / Fiber optic / No |
-| OnlineSecurity | 온라인 보안 서비스 이용 여부 | object<br/>Yes / No / No internet service |
-| OnlineBackup | 온라인 백업 서비스 이용 여부 | object<br/>Yes / No / No internet service |
-| DeviceProtection | 기기 보호 서비스 이용 여부 | object<br/>Yes / No / No internet service |
-| TechSupport | 기술 지원 서비스 이용 여부 | object<br/>Yes / No / No internet service |
-| StreamingTV | 스트리밍 TV 서비스 이용 여부 | object<br/>Yes / No / No internet service |
-| StreamingMovies | 스트리밍 영화 서비스 이용 여부 | object<br/>Yes / No / No internet service |
-| Contract |고객의 계약 기간  | object<br/>Month-to-month / One year / Two year |
-| PaperlessBiling | 무서류 청구서 사용 여부 | object<br/>Yes / No |
-| PaymentMethod | 고객의 결제 수단 | object<br/>Electronic check / Mailed check<br/>/ Bank transfer(automatic) / Credit card (automatic) |
-| MonthlyCharges | 월 청구 금액 | float64 |
-| TotalCharges | 총 청구 금액 | object |
-| Churn | 고객의 이탈 여부 | object<br/>Yes / No |
+| **customerID** | 고객 ID | object |
+| **gender** | 성별 | object<br/>- Male / Female |
+| **SeniorCitizen** | 고객의 노인 여부 | int64<br/>- 1 / 0 |
+| **Partner** | 고객의 파트너 여부 | object<br/>- Yes / No |
+| **Dependents** | 고객의 부양가족 여부 | object<br/>- Yes / No |
+| **tenure** | 고객의 통신사 가입 기간(개월) | int64 |
+| **PhoneService** | 전화 서비스 이용 여부 | object<br/>- Yes / No |
+| **MultipleLines** | 다중 회선 유무 | object<br/>- Yes / No / No phone service |
+| **InternetService** | 인터넷 서비스 종류 | object<br/>- DSL / Fiber optic / No |
+| **OnlineSecurity** | 온라인 보안 서비스 이용 여부 | object<br/>- Yes / No / No internet service |
+| **OnlineBackup** | 온라인 백업 서비스 이용 여부 | object<br/>- Yes / No / No internet service |
+| **DeviceProtection** | 기기 보호 서비스 이용 여부 | object<br/>- Yes / No / No internet service |
+| **TechSupport** | 기술 지원 서비스 이용 여부 | object<br/>- Yes / No / No internet service |
+| **StreamingTV** | 스트리밍 TV 서비스 이용 여부 | object<br/>- Yes / No / No internet service |
+| **StreamingMovies** | 스트리밍 영화 서비스 이용 여부 | object<br/>- Yes / No / No internet service |
+| **Contract** |고객의 계약 기간  | object<br/>- Month-to-month / One year / Two year |
+| **PaperlessBiling** | 무서류 청구서 사용 여부 | object<br/>- Yes / No |
+| **PaymentMethod** | 고객의 결제 수단 | object<br/>- Electronic check / Mailed check<br/>/ Bank transfer(automatic) / Credit card (automatic) |
+| **MonthlyCharges** | 월 청구 금액 | float64 |
+| **TotalCharges** | 총 청구 금액 | object |
+| **Churn** | 고객의 이탈 여부 | object<br/>- Yes / No |
 <br/>
 <br/>
 
@@ -201,14 +213,14 @@
 <br/>
 
 **1. 히트맵**
-- 각 특성들의 연관도 확인
+- 각 특성들의 **연관도** 확인
 <br/>
 
 <img src='images/EDA_1.png' width='800' height='auto'>
 <br/>
 
 **2. 카이제곱 검정**
-- Churn(이탈 여부)과 특성 간의 관련도
+- Churn(이탈 여부)과 특성 간의 **관련도**
   - gender와 PhoneService가 Churn과 관련이 적음
 <br/>
 
@@ -216,7 +228,7 @@
 <br/>
 
 **3. 막대 그래프**
-- 특성에 따른 Churn의 분포
+- 특성에 따른 Churn의 **분포**
 <br/>
 
 <img src='images/EDA_3.png' width='800' height='auto'>
@@ -289,7 +301,7 @@
 <br/>
 
 ### Data Scaling & Encoding
-- LightGBM 모델은 별도의 스케일링이나 인코딩 과정이 필요하지 않으므로 생략한다.
+- **LightGBM 모델**은 별도의 스케일링이나 인코딩 과정이 필요하지 않으므로 생략한다.
 <br/>
 <br/>
 
