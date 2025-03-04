@@ -172,6 +172,10 @@
 ### 메인 페이지
 <br/>
 
+<img src='images/화면설계.png' width='800' height='auto'>
+<br/>
+<br/>
+
 ## 📊 Machine Learning - EDA
 <br/>
 
