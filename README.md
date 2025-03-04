@@ -166,6 +166,117 @@
 <br/>
 <br/>
 
+## 데이터
+<br/>
+
+<table style="width: 100%; table-layout: fixed;">
+  <tr>
+    <td style="text-align: center; width: 20%;">customerID</td>
+    <td style="text-align: center; width: 60%;">고객 ID</td>
+    <td style="text-align: center; width: 20%;">object</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">gender</td>
+    <td style="text-align: center; width: 60%;">성별</td>
+    <td style="text-align: center; width: 20%;">object<br/>Male / Female</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">SeniorCitizen</td>
+    <td style="text-align: center; width: 60%;">고객의 노인 여부</td>
+    <td style="text-align: center; width: 20%;">int64<br/>1 / 0</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">Partner</td>
+    <td style="text-align: center; width: 60%;">고객의 파트너 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">Dependents</td>
+    <td style="text-align: center; width: 60%;">고객의 부양가족 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">tenure</td>
+    <td style="text-align: center; width: 60%;">고객의 가입 개월 수</td>
+    <td style="text-align: center; width: 20%;">int64</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">PhoneService</td>
+    <td style="text-align: center; width: 60%;">전화 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">MultipleLines</td>
+    <td style="text-align: center; width: 60%;">다중 회선 유무</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No phone service</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">InternetService</td>
+    <td style="text-align: center; width: 60%;">인터넷 서비스 종류</td>
+    <td style="text-align: center; width: 20%;">object<br/>DSL / Fiber optic / No</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">OnlineSecurity</td>
+    <td style="text-align: center; width: 60%;">온라인 보안 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">OnlineBackup</td>
+    <td style="text-align: center; width: 60%;">온라인 백업 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">DeviceProtection</td>
+    <td style="text-align: center; width: 60%;">기기 보호 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">TechSupport</td>
+    <td style="text-align: center; width: 60%;">기술 지원 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">StreamingTV</td>
+    <td style="text-align: center; width: 60%;">스트리밍 TV 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">StreamingMovies</td>
+    <td style="text-align: center; width: 60%;">스트리밍 영화 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">Contract</td>
+    <td style="text-align: center; width: 60%;">고객의 계약 기간</td>
+    <td style="text-align: center; width: 20%;">object<br/>Month-to-month / One year / Two year</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">PaperlessBiling</td>
+    <td style="text-align: center; width: 60%;">무서류 청구서 사용 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">PaymentMethod</td>
+    <td style="text-align: center; width: 60%;">고객의 결제 수단</td>
+    <td style="text-align: center; width: 20%;">object<br/>Electronic check / Mailed check / Bank transfer(automatic) / Credit card (automatic)</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">MonthlyCharges</td>
+    <td style="text-align: center; width: 60%;">월 청구 금액</td>
+    <td style="text-align: center; width: 20%;">float64</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">TotalCharges</td>
+    <td style="text-align: center; width: 60%;">총 청구 금액</td>
+    <td style="text-align: center; width: 20%;">object</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; width: 20%;">Churn</td>
+    <td style="text-align: center; width: 60%;">고객의 이탈 여부</td>
+    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+  </tr>
+</table>
+
 ## 💻 화면 설계
 <br/>
 
