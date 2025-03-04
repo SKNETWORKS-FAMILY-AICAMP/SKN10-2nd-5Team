@@ -14,6 +14,7 @@ plt.rcParams['font.family'] = font_prop.get_name()
 # 탭 표시 꾸미기
 st.set_page_config(page_title="EDA", page_icon="📈")
 st.title("EDA")
+st.markdown("---")
 
 st.markdown("## **1. 히트맵**")
 st.write("각 특성들의 연관도 확인")
