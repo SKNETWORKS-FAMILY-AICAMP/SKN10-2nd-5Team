@@ -11,7 +11,7 @@
 | **이서영** | **경규휘** | **권석현** | **원유형** | **좌민서** |
 | :---: | :---: | :---: | :---: | :---: |
 | **팀장** | 팀원 | 팀원 | 팀원 | 팀원 |
-| 모델 설계 - ML<br/>(GradientBoost)<br/>화면 구현 | 모델 설계 - ML<br/>(LightGBM)<br/> EDA | 모델 설계 - DL | 모델 설계 - ML<br/>(Voting)<br/>화면 설계 | 모델 설계 - ML<br/>(XGBoost)<br/>화면 구현 |
+| 모델 설계 - ML<br/>(GradientBoost)<br/>화면 구현 | 모델 설계 - ML<br/>(LightGBM)<br/> EDA | 모델 설계 - DL<br/> (MLP) | 모델 설계 - ML<br/>(Voting)<br/>화면 설계 | 모델 설계 - ML<br/>(XGBoost)<br/>화면 구현 |
 | [@Lee Seoyoung](https://github.com/Eseo0) | [@kqe0012](https://github.com/kqe123) | [@seo-droid](https://github.com/seo-droid) | [@uhyeong](https://github.com/uhyeong) | [@INe](https://github.com/INe904) |
 
 <br/>
@@ -140,8 +140,7 @@
 
 **모델 생성 및 정확도 계산**
 
-- 실행되지 않을 경우, service/preprocess.py의 `from service.utils import reset_seeds
-`을 주석처리 하고, `from utils import reset_seeds`의 주석을 해제하여 실행한다.
+- 실행되지 않을 경우, service/preprocess.py의 `from service.utils import reset_seeds`을 주석처리 하고, `from utils import reset_seeds`의 주석을 해제하여 실행한다.
 
 ```python
     python service/run.py
@@ -151,8 +150,7 @@
 
 #### 고객 예측 서비스
 
-- 실행되지 않을 경우, service/preprocess.py의 `from utils import reset_seeds
-`을 주석처리 하고, `from service.utils import reset_seeds`의 주석을 해제하여 실행한다다.
+- 실행되지 않을 경우, service/preprocess.py의 `from utils import reset_seeds`을 주석처리 하고, `from service.utils import reset_seeds`의 주석을 해제하여 실행한다다.
 
 ```python
     streamlit run mainpage.py
