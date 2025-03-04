@@ -1,55 +1,61 @@
+import os
 import numpy as np
+import random
+import torch
+import scipy.stats as stats
 import pandas as pd
-from utils import reset_seeds
-from sklearn.preprocessing import LabelEncoder
+import numpy as np
 from sklearn.model_selection import train_test_split
-from imblearn.combine import SMOTEENN
-def __cleaning_data(df):
+from sklearn.metrics import f1_score
+from sklearn.preprocessing import OneHotEncoder
+from xgboost import XGBClassifier
+from xgboost.callback import EarlyStopping
+from xgboost import plot_importance
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
+import warnings
+import seaborn as sns
+import koreanize_matplotlib  # matplotlib 한글화
+import easydict
 
+# utils.py에서 reset_seeds 함수 가져오기 (수정된 부분)
+from utils import reset_seeds
+
+warnings.filterwarnings(action='ignore')
+
+# 시드 고정 적용 (수정된 부분)
+reset_seeds(seed=42)
+
+def read_csv():
+    args = easydict.EasyDict()
+    # path info
+    args.default_path = "data/"
+    args.all_csv = args.default_path + "Telco_customer.csv"
+    ori_all = pd.read_csv(args.all_csv)
+    return ori_all
+
+###################################### Data Cleaning #########################################
+
+# yes, no인 범주형 컬럼을 0과 1로 변환하는 함수
+def binary_categorical_to_numeric(df):
+    binary_categorical_columns = ['Partner', 'Dependents', 'PaperlessBilling']
+    for column in binary_categorical_columns:
+        df[column] = df[column].apply(lambda x: 1 if x == "Yes" else 0)
     return df
 
-
-def __create_custom_features(df):
-
+# 컬럼 삭제 함수
+def drop_columns(df):
+    drop_columns = ["customerID", "MonthlyCharges", "PhoneService", "StreamingTV", "gender"]
+    df = df.drop(columns=drop_columns, axis=1)
     return df
 
-def __smote_data(X,y):
-    # 4. SMOTE 적용
-    sm = SMOTEENN()
-    X_smo, y_smo = sm.fit_resample(X, y)
-    return X_smo,y_smo
-
-def __encode_data(df):
-    le=LabelEncoder()
-    df['Churn']=le.fit_transform(df['Churn'])
-    df['TotalCharges']=pd.to_numeric(df['TotalCharges'],errors='coerce')
-
-
-    numeric_data=df.select_dtypes(include=np.number)
-    categorical_data=df.select_dtypes(exclude=np.number)
-
-    for i in categorical_data.columns:
-        df[i]=le.fit_transform(categorical_data[i])
+# lightGBM은 str를 인식 못하므로 category로 변환하는 함수
+def str_to_category(df):
+    columns = ['InternetService', 'MultipleLines', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingMovies', 'Contract', 'PaymentMethod']
+    for col in columns:
+        df[col] = df[col].astype("category")
     return df
-
-
-
-@reset_seeds
-def preprocess_dataset(data):
-    df=data.dropna()
-    
-    df = __encode_data(df)
-    
-    
-    
-    
-    y = df["Churn"]
-    X = df.drop(columns=["Churn"])
-    x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
-
-
-    X_smo, y_smo = __smote_data(x_train, y_train)
-
-
-
-    return X_smo,x_test,y_smo,y_test
