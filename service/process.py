@@ -7,16 +7,17 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import f1_score
 from sklearn.ensemble import (
     GradientBoostingClassifier, RandomForestClassifier,
-    VotingClassifier, StackingClassifier
+    StackingClassifier
 )
 from sklearn.linear_model import LogisticRegression, RidgeClassifier
 from lightgbm import LGBMClassifier
 from sklearn.naive_bayes import GaussianNB
+from utils import reset_seeds
 
 
 def __apply_smote(X, y):
     """ SMOTE 적용 (훈련 데이터에서만 실행) """
-    smote = SMOTE(sampling_strategy=0.65, random_state=42)
+    smote = SMOTE(sampling_strategy=0.65, random_state=42)  # ✅ 시드 고정
     X_resampled, y_resampled = smote.fit_resample(X, y)
     return X_resampled, y_resampled
 
@@ -29,10 +30,11 @@ def optimize_xgb(trial, X, y):
         "max_depth": trial.suggest_int("max_depth", 2, 6),
         "subsample": trial.suggest_float("subsample", 0.6, 0.9),
         "colsample_bytree": trial.suggest_float("colsample_bytree", 0.6, 0.9),
+        "random_state": 42  # ✅ 시드 고정
     }
     model = xgb.XGBClassifier(**params, use_label_encoder=False)
 
-    skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
+    skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)  # ✅ 시드 고정
     scores = []
 
     for train_idx, val_idx in skf.split(X, y):
@@ -40,12 +42,9 @@ def optimize_xgb(trial, X, y):
         y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]
 
         model.fit(
-            X_train, y_train
-            , eval_set=[(X_val, y_val)]  
-            #, eval_metric="logloss"
-            #, early_stopping_rounds=10  # ✅ 최신 XGBoost에 맞게 수정
-            , verbose=False
-            
+            X_train, y_train,
+            eval_set=[(X_val, y_val)],
+            verbose=False
         )
         preds = model.predict(X_val)
         scores.append(f1_score(y_val, preds))
@@ -53,24 +52,29 @@ def optimize_xgb(trial, X, y):
     return np.mean(scores)
 
 
+@reset_seeds
 def train_model(X, y):
     """ 모델 학습 및 평가 """
     X_train_resampled, y_train_resampled = __apply_smote(X, y)
 
-    study = optuna.create_study(direction="maximize")
+    study = optuna.create_study(
+        direction="maximize",
+        sampler=optuna.samplers.TPESampler(seed=42)  # ✅ Optuna 시드 고정
+    )
     study.optimize(lambda trial: optimize_xgb(trial, X_train_resampled, y_train_resampled), n_trials=20)
 
     best_xgb_params = study.best_params
+    best_xgb_params["random_state"] = 42  # ✅ XGBoost 모델의 random_state 고정
     xgb_model = xgb.XGBClassifier(**best_xgb_params, use_label_encoder=False)
 
-    gbc = GradientBoostingClassifier(n_estimators=300)
-    rf = RandomForestClassifier(n_estimators=300)
-    ridge = RidgeClassifier()
+    gbc = GradientBoostingClassifier(n_estimators=300, random_state=42)  # ✅ 시드 고정
+    rf = RandomForestClassifier(n_estimators=300, random_state=42)  # ✅ 시드 고정
+    ridge = RidgeClassifier(random_state=42)  # ✅ 시드 고정
     nb = GaussianNB()
 
     stack_model = StackingClassifier(
         estimators=[("gbc", gbc), ("rf", rf), ("xgb", xgb_model), ("ridge", ridge), ("nb", nb)],
-        final_estimator=LogisticRegression()
+        final_estimator=LogisticRegression(random_state=42)  # ✅ 시드 고정
     )
 
     stack_model.fit(X_train_resampled, y_train_resampled)
@@ -81,5 +85,6 @@ def train_model(X, y):
     return stack_model
 
 
+@reset_seeds
 def run_training(X_train, y_train):
     return train_model(X_train, y_train)

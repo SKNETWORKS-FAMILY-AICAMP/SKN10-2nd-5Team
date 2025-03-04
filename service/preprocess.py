@@ -1,9 +1,11 @@
 import pandas as pd
 import joblib
-from service.utils import reset_seeds
-from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler
+import numpy as np
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, LabelEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from service.utils import reset_seeds
+from service.utils import reset_seeds
+
 
 def __cleaning_data(df):
     """ 데이터 클리닝: 중복 제거, 결측치 처리, 불필요한 컬럼 삭제 """
@@ -22,13 +24,16 @@ def __cleaning_data(df):
 
     return df
 
+
+@reset_seeds  # ✅ 시드 고정
 def scale_numeric_features(X_train, X_test, numeric_features, scaler_type="standard"):
     """ 수치형 변수 스케일링 함수 """
+
     if scaler_type.lower() == "standard":
         scaler = StandardScaler()
     elif scaler_type.lower() == "minmax":
         scaler = MinMaxScaler()
-    elif scaler_type == "robust":
+    elif scaler_type.lower() == "robust":
         scaler = RobustScaler()
     else:
         raise ValueError("scaler_type must be either 'standard', 'minmax', or 'robust'")
@@ -39,9 +44,11 @@ def scale_numeric_features(X_train, X_test, numeric_features, scaler_type="stand
 
     # 학습된 스케일러 저장
     joblib.dump(scaler, "models/scaler.pkl")
-    
+
     return X_train, X_test
 
+
+@reset_seeds  # ✅ 시드 고정
 def __encode_data(df):
     """ 범주형 데이터 인코딩 """
     # 이진 변수(Yes/No)를 0과 1로 변환
@@ -63,7 +70,8 @@ def __encode_data(df):
 
     return df
 
-@reset_seeds
+
+@reset_seeds  # ✅ 시드 고정
 def preprocess_dataset(df):
     """ 데이터 전처리: 클리닝, 인코딩, 스케일링 """
     df = __cleaning_data(df)
@@ -75,7 +83,7 @@ def preprocess_dataset(df):
 
     # 데이터 분리 (학습 70%, 테스트 30%)
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.3, random_state=42, stratify=y
+        X, y, test_size=0.3, random_state=42, stratify=y  # ✅ 시드 고정
     )
 
     # 수치형 변수 스케일링 및 저장
