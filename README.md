@@ -20,15 +20,15 @@ gender와 PhoneService가 Churn(이탈 여부)와 관련이 적다는 것을 알
 
 - 노인(1142명)중 이탈한 노인이 476명으로, 41%이다.
 
-<img src="image/EDA_6.png" width="700" height="auto">
+<img src="image/EDA_6.png" width="500" height="auto">
 
 - 이탈한 고객중 OnlineSecurity와 OnlineBackup를 쓰지않은 고객이 48%이다.
 
-<img src="image/EDA_7.png" width="700" height="auto">
+<img src="image/EDA_7.png" width="500" height="auto">
 
 - 인터넷 서비스를 **Fiber optic**로 쓰는 사람이 제일 돈을 많이 낸다. 
 
-<img src="image/EDA_8.png" width="700" height="auto">
+<img src="image/EDA_8.png" width="500" height="auto">
 
 **이탈한 고객(1869명)의 대부분이 Month-to-Month 계약**을 했고, 그 중에서 TechSupport를 안쓰는 고객이 1350명이다.
 
