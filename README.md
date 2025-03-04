@@ -10,11 +10,11 @@
 
 <table style="width: 100%; table-layout: fixed;">
   <tr>
-    <td style="text-align: center; width: 20%;">이서영</td>
-    <td style="text-align: center; width: 20%;">경규휘</td>
-    <td style="text-align: center; width: 20%;">권석현</td>
-    <td style="text-align: center; width: 20%;">원유형</td>
-    <td style="text-align: center; width: 20%;">좌민서</td>
+    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;이서영&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;경규휘&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;권석현&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;원유형&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;좌민서&nbsp;&nbsp;&nbsp;&nbsp;</td>
   </tr>
   <tr>
     <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
