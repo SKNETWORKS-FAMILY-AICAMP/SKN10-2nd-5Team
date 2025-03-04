@@ -91,3 +91,7 @@ gender와 PhoneService가 Churn(이탈 여부)와 관련이 적다는 것을 알
 
 <img src="image/Model7.png" width="500" height="auto">
 
+- 특성 중요도가 다음과 같이 나온다.
+
+<img src="image/Model8.png" width="500" height="auto">
+
