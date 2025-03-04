@@ -203,17 +203,17 @@
 <img src='images/EDA_6.png' width='600' height='auto'>
 <br/>
 
-- 이탈한 고객 중 **'OnlineSecurity'**와 **'OnlineBackup'** 서비스를 사용하지 않는 고객이 48%를 차지한다.
+- 이탈한 고객 중 **OnlineSecurity**와 **OnlineBackup** 서비스를 사용하지 않는 고객이 48%를 차지한다.
 <br/>
 <img src='images/EDA_7.png' width='600' height='auto'>
 <br/>
 
-- **'InternetService'**를 **Fiber optic**으로 사용하는 사람이 제일 돈을 많이 지불한다.
+- **InternetService**를 **Fiber optic**으로 사용하는 사람이 제일 돈을 많이 지불한다.
 <br/>
 <img src='images/EDA_8.png' width='600' height='auto'>
 <br/>
 
-- 이탈한 고객(1869명)의 대부분이 **Month-to-Month** 계약을 했고, 그 중에서 'TechSupport' 서비스를 사용하지 않는 고객이 1350명이다.
+- 이탈한 고객(1869명)의 대부분이 **Month-to-Month** 계약을 했고, 그 중에서 **TechSupport** 서비스를 사용하지 않는 고객이 1350명이다.
 <br/>
 <img src='images/EDA_9.png' width='800' height='auto'>
 <br/>
@@ -231,9 +231,9 @@
 <img src='images/Cleaning_1.png' width='800' height='auto'>
 <br/>
 
-- **'Churn'**의 컬럼 값을 **1 / 0**으로 변환한다.
+- **Churn**의 컬럼 값을 **1 / 0**으로 변환한다.
 
-- **'TotalCharges'**의 타입을 숫자형으로 변환한다.
+- **TotalCharges**의 타입을 숫자형으로 변환한다.
 <br/>
 <img src='images/Cleaning_2.png' width='800' height='auto'>
 <br/>
@@ -243,7 +243,7 @@
 <img src='images/Cleaning_5.png' width='800' height='auto'>
 
 **2. Feature Extraction**
-- **'notSecurityBackup**, **'isAlone'**, **'notTechSupport'**, **'new_avg_charges'**, **'new_increase'** 특성을 추가한다.
+- **notSecurityBackup**, **isAlone**, **notTechSupport**, **new_avg_charges**, **new_increase** 특성을 추가한다.
 <br/>
 <img src='images/Cleaning_3.png' width='800' height='auto'>
 <br/>
