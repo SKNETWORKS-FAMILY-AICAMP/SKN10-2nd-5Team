@@ -100,11 +100,20 @@ def preprocess_ml(input_df):
     return data
 
 def preprocess_dl(input_df):
-    # 1. 데이터 불러오기
-    df = input_df
+
+    df = input_df.drop(columns=['customerID'])
+    st.write(" 데이터 로드 후 : ")
+    st.write(df.shape)
     df = create_custom_features(df)
+    st.write(" 피쳐 추가 후 : ")
+    st.write(df.shape)
     df = cleaning_data(df) 
+    st.write(" 클리닝 후 : ")
+    st.write(df.shape)
+    st.write(df.select_dtypes(include=['object']))
     df = encode_data(df)
+    st.write(" 인코딩 후 : ")
+    st.write(df.shape)
 
     return df
 
@@ -117,9 +126,9 @@ def load_model(model_stat: str):
     if model_stat == "ML":
         return joblib.load("model/lightgbm_model.pkl")
     elif model_stat == "DL":
-        input_size = 39  # 현재 데이터 크기에 맞춰 조정
+        input_size = 25  # 현재 데이터 크기에 맞춰 조정
         output_size = 2  # 이진 분류 모델이라면 2
-        hidden_size=32
+        hidden_size= 32
 
         model = MultiModel(input_size=input_size, out_size=output_size, hidden_size=hidden_size)
         model.load_state_dict(torch.load("model/best_model.pth", map_location=device))  
@@ -129,7 +138,7 @@ def load_model(model_stat: str):
         return None
 
 # 모델 선택하기
-model_stat = "DL"
+model_stat = "ML"
 
 # 모델 불러오기
 model = load_model(model_stat)
@@ -138,7 +147,7 @@ if st.button("예측하기"):
     input_df = pd.DataFrame([user_input])
 
     # ✅ UI에서 숨겼던 customerID와 Churn을 임시 추가
-    input_df["customerID"] = "0000-AAAAA"  # 임의의 ID 값
+    input_df["customerID"] = "0000-AAAAA"  # 임의의 ID 값S
     input_df["Churn"] = 0  # 전처리 과정에서 필요하므로 임시 추가
 
     # 전처리 및 예측 
@@ -148,7 +157,7 @@ if st.button("예측하기"):
         pred_prob = model.predict_proba(data)[:,1]
         pred_class = (pred_prob >= 0.5).astype(int)
         
-        st.markdown(f"### 고객 이탈 확률: {pred_prob[0]:.4f}")
+        st.markdown(f"### 고객 이탈 확률: {int(pred_prob[0]*100)}%")
 
     elif model_stat == "DL":
         data = preprocess_dl(input_df)

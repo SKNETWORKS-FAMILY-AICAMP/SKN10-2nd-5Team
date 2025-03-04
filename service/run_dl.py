@@ -4,19 +4,31 @@ from process_dl import *
 import torch
 from torch.utils.data import DataLoader, TensorDataset, random_split
 
+dl_set_seed()
 # 1. 데이터 불러오기
 df = load_data()
+print("데이터 로드 후 : ",df.shape)
+print(df.columns)
 df = create_custom_features(df)
-df = cleaning_data(df) 
+print("특성 추가 후 : ",df.shape)
+print(df.columns)
+df = cleaning_data(df)
+print("클리닝 후 : ",df.shape) 
+print(df.columns)
 df = encode_data(df)
+print("원핫인코딩 후 : ",df.shape)
+print(df.columns)
 X,y = smote_data(df)
+print("smote 적용 후 : ",df.shape)
+print(df.columns)
 
 # 2. 데이터 전처리
 # 모델 설정
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# 3. 모델 초기화화
+# 3. 모델 초기화
 model = MultiModel(X.shape[1],len(set(y))).to(device)
+print(X.shape[1],len(set(y)))
 
 # 4. 손실 함수 및 옵티마이저 설정
 criterion = nn.CrossEntropyLoss()
