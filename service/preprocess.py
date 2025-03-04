@@ -22,8 +22,8 @@ import seaborn as sns
 import koreanize_matplotlib  # matplotlib 한글화
 import easydict
 
-# utils.py에서 reset_seeds 함수 가져오기 (수정된 부분)
-from utils import reset_seeds
+from service.utils import reset_seeds
+#from utils import reset_seeds
 
 warnings.filterwarnings(action='ignore')
 

@@ -1,5 +1,6 @@
 from preprocess import *
 from process import *
+import joblib
 
 reset_seeds()
 data = read_csv() # 데이터 불러오기
@@ -37,6 +38,7 @@ print(data.info())
 model = train_model(x_tr, x_te, y_tr, y_te)
 model_evaluation(model, x_te, y_te)
 model.booster_.save_model("model/lightgbm_model.txt")
+joblib.dump(model, "model/lightgbm_model.pkl")
 
 # 저장된 모델 불러오기
 #loaded_model = lgb.Booster(model_file="lightgbm_model.txt")
