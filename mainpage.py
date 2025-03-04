@@ -57,9 +57,9 @@ for i, feature in enumerate(visible_numerical_features):
     if i % 3 == 0:
         user_input[feature] = col1.slider(feature, min_val, max_val, avg_val)
     elif i % 3 == 1:
-        user_input[feature] = col2.slider(feature, min_val, max_val, avg_val)
+        user_input[feature] = col2.number_input(feature, min_val, max_val, avg_val)
     else:
-        user_input[feature] = col3.slider(feature, min_val, max_val, avg_val)
+        user_input[feature] = col3.number_input(feature, min_val, max_val, avg_val)
 
 st.markdown("---")
 
