@@ -10,11 +10,11 @@
 
 <table style="width: 100%; table-layout: fixed;">
   <tr>
-    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;이서영&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;경규휘&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;권석현&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;원유형&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td style="text-align: center; width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;좌민서&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="text-align: center; width: 20%;"><b>이서영</b></td>
+    <td style="text-align: center; width: 20%;"><b>경규휘</b></td>
+    <td style="text-align: center; width: 20%;"><b>권석현</b></td>
+    <td style="text-align: center; width: 20%;"><b>원유형</b></td>
+    <td style="text-align: center; width: 20%;"><b>좌민서</b></td>
   </tr>
   <tr>
     <td style="text-align: center; width: 20%;">모델 설계<br/>화면 구현</td>
@@ -263,7 +263,7 @@
   <tr>
     <td style="text-align: center; width: 20%;">PaymentMethod</td>
     <td style="text-align: center; width: 60%;">고객의 결제 수단</td>
-    <td style="text-align: center; width: 20%;">object<br/>Electronic check / Mailed check / Bank transfer(automatic) / Credit card (automatic)</td>
+    <td style="text-align: center; width: 20%;">object<br/>Electronic check / Mailed check<br/>/ Bank transfer(automatic) / Credit card (automatic)</td>
   </tr>
   <tr>
     <td style="text-align: center; width: 20%;">MonthlyCharges</td>
