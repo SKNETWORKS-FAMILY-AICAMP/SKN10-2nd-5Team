@@ -169,111 +169,111 @@
 ## 데이터
 <br/>
 
-<table style="width: 100%;">
+<table style="width: 100%; table-layout: fixed; border-collapse: collapse;">
   <tr>
-    <td style="text-align: center; width: 20%;">customerID</td>
-    <td style="text-align: center; width: 60%;">고객 ID</td>
-    <td style="text-align: center; width: 20%;">object</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">customerID</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">고객 ID</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">gender</td>
-    <td style="text-align: center; width: 60%;">성별</td>
-    <td style="text-align: center; width: 20%;">object<br/>Male / Female</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">gender</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">성별</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Male / Female</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">SeniorCitizen</td>
-    <td style="text-align: center; width: 60%;">고객의 노인 여부</td>
-    <td style="text-align: center; width: 20%;">int64<br/>1 / 0</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">SeniorCitizen</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">고객의 노인 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">int64<br/>1 / 0</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">Partner</td>
-    <td style="text-align: center; width: 60%;">고객의 파트너 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">Partner</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">고객의 파트너 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">Dependents</td>
-    <td style="text-align: center; width: 60%;">고객의 부양가족 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">Dependents</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">고객의 부양가족 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">tenure</td>
-    <td style="text-align: center; width: 60%;">고객의 가입 개월 수</td>
-    <td style="text-align: center; width: 20%;">int64</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">tenure</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">고객의 가입 개월 수</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">int64</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">PhoneService</td>
-    <td style="text-align: center; width: 60%;">전화 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">PhoneService</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">전화 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">MultipleLines</td>
-    <td style="text-align: center; width: 60%;">다중 회선 유무</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No phone service</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">MultipleLines</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">다중 회선 유무</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No / No phone service</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">InternetService</td>
-    <td style="text-align: center; width: 60%;">인터넷 서비스 종류</td>
-    <td style="text-align: center; width: 20%;">object<br/>DSL / Fiber optic / No</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">InternetService</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">인터넷 서비스 종류</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>DSL / Fiber optic / No</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">OnlineSecurity</td>
-    <td style="text-align: center; width: 60%;">온라인 보안 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">OnlineSecurity</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">온라인 보안 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No / No internet service</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">OnlineBackup</td>
-    <td style="text-align: center; width: 60%;">온라인 백업 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">OnlineBackup</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">온라인 백업 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No / No internet service</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">DeviceProtection</td>
-    <td style="text-align: center; width: 60%;">기기 보호 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">DeviceProtection</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">기기 보호 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No / No internet service</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">TechSupport</td>
-    <td style="text-align: center; width: 60%;">기술 지원 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">TechSupport</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">기술 지원 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No / No internet service</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">StreamingTV</td>
-    <td style="text-align: center; width: 60%;">스트리밍 TV 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">StreamingTV</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">스트리밍 TV 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No / No internet service</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">StreamingMovies</td>
-    <td style="text-align: center; width: 60%;">스트리밍 영화 서비스 이용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No / No internet service</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">StreamingMovies</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">스트리밍 영화 서비스 이용 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No / No internet service</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">Contract</td>
-    <td style="text-align: center; width: 60%;">고객의 계약 기간</td>
-    <td style="text-align: center; width: 20%;">object<br/>Month-to-month / One year / Two year</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">Contract</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">고객의 계약 기간</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Month-to-month / One year / Two year</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">PaperlessBiling</td>
-    <td style="text-align: center; width: 60%;">무서류 청구서 사용 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">PaperlessBiling</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">무서류 청구서 사용 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">PaymentMethod</td>
-    <td style="text-align: center; width: 60%;">고객의 결제 수단</td>
-    <td style="text-align: center; width: 20%;">object<br/>Electronic check / Mailed check / Bank transfer(automatic) / Credit card (automatic)</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">PaymentMethod</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">고객의 결제 수단</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Electronic check / Mailed check / Bank transfer(automatic) / Credit card (automatic)</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">MonthlyCharges</td>
-    <td style="text-align: center; width: 60%;">월 청구 금액</td>
-    <td style="text-align: center; width: 20%;">float64</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">MonthlyCharges</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">월 청구 금액</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">float64</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">TotalCharges</td>
-    <td style="text-align: center; width: 60%;">총 청구 금액</td>
-    <td style="text-align: center; width: 20%;">object</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">TotalCharges</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">총 청구 금액</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object</td>
   </tr>
   <tr>
-    <td style="text-align: center; width: 20%;">Churn</td>
-    <td style="text-align: center; width: 60%;">고객의 이탈 여부</td>
-    <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">Churn</td>
+    <td style="text-align: center; width: 60%; word-wrap: break-word;">고객의 이탈 여부</td>
+    <td style="text-align: center; width: 20%; word-wrap: break-word;">object<br/>Yes / No</td>
   </tr>
 </table>
 
