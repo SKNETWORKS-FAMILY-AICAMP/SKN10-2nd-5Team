@@ -18,11 +18,11 @@ gender와 PhoneService가 Churn(이탈 여부)와 관련이 적다는 것을 알
 <img src="image/EDA_4.png" width="700" height="auto">
 <img src="image/EDA_5.png" width="700" height="auto">
 
-노인(1142명)중 이탈한 노인이 476명으로, **41%**이다.
+노인(1142명)중 이탈한 노인이 476명으로, 41%이다.
 
 <img src="image/EDA_6.png" width="700" height="auto">
 
-이탈한 고객중 **OnlineSecurity와 OnlineBackup를 쓰지않은 고객이 48%**이다.
+이탈한 고객중 OnlineSecurity와 OnlineBackup를 쓰지않은 고객이 48%이다.
 
 <img src="image/EDA_7.png" width="700" height="auto">
 
