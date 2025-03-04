@@ -62,6 +62,7 @@ def drop_columns(df) :
 def str_to_category(df) :
   columns = ['InternetService' ,'MultipleLines', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport','StreamingMovies', 'Contract', 'PaymentMethod']
   for col in columns :
+    df[col] = df[col].str.lower()
     df[col] = df[col].astype("category")
   return df
 
