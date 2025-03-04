@@ -195,8 +195,6 @@
 - 특성에 따른 Churn의 분포
 <br/>
 <img src='images/EDA_3.png' width='800' height='auto'>
-<img src='images/EDA_4.png' width='800' height='auto'>
-<img src='images/EDA_5.png' width='800' height='auto'>
 <br/>
 
 **4. 데이터 분석**
