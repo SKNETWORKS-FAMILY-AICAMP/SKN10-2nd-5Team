@@ -216,6 +216,7 @@
 
 **1. 히트맵**
 - 각 특성들의 **연관도** 확인
+    - **StreamingTV**와 **StreamingMovies**의 연관도가 0.8 이상으로 매우 높음음
 <br/>
 
 <img src='images/EDA_1.png' width='800' height='auto'>
@@ -223,7 +224,7 @@
 
 **2. 카이제곱 검정**
 - Churn(이탈 여부)과 특성 간의 **관련도**
-  - gender와 PhoneService가 Churn과 관련이 적음
+    - gender와 PhoneService가 Churn과 관련이 적음
 <br/>
 
 <img src='images/EDA_2.png' width='400' height='auto'>
@@ -300,10 +301,13 @@
 
 <img src='images/Cleaning_4.png' width='800' height='auto'>
 <br/>
+
 <br/>
 
 ### Data Scaling & Encoding
 - **LightGBM 모델**은 별도의 스케일링이나 인코딩 과정이 필요하지 않으므로 생략한다.
+- 데이터가 불균형적이기 때문에 샘플링 수행
+    - 테스트 점수가 떨어져 샘플링 제거거
 <br/>
 <br/>
 
