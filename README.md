@@ -281,6 +281,8 @@
     <td style="text-align: center; width: 20%;">object<br/>Yes / No</td>
   </tr>
 </table>
+<br/>
+<br/>
 
 ## 💻 화면 설계
 <br/>
@@ -288,7 +290,13 @@
 ### 메인 페이지
 <br/>
 
-<img src='images/화면설계.png' width='800' height='auto'>
+<img src='images/화면설계1.png' width='800' height='auto'>
+<br/>
+
+### EDA
+<br/>
+
+<img src='images/화면설계1.png' width='800' height='auto'>
 <br/>
 <br/>
 
