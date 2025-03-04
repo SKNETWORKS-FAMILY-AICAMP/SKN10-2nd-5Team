@@ -347,6 +347,12 @@
 
 <img src='images/Model7.png' width='600' height='auto'>
 <br/>
+
+**8. Feature Importance**
+<br/>
+
+<img src='images/feature_importance.png' width='600' height='auto'>
+<br/>
 <br/>
 
 ## ⚙️ Deep Learning - 모델 설계
