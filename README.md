@@ -5,6 +5,9 @@
  
  ![image](https://github.com/user-attachments/assets/5ee49781-bdd7-4c7b-b5cc-a571e2dd7127)
 
+ ![image](https://github.com/user-attachments/assets/23874e5c-e186-426e-b23d-3019ddb9c0ff)
+
+
 **Adam 옵티마이저 활용**
 
 ![image](https://github.com/user-attachments/assets/c5c25b6a-28fa-4ed5-a953-819469a80923)
