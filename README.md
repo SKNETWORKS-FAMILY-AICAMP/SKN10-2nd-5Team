@@ -143,7 +143,11 @@
 - 실행되지 않을 경우, service/preprocess.py의 `from service.utils import reset_seeds`을 주석처리 하고, `from utils import reset_seeds`의 주석을 해제하여 실행한다.
 
 ```python
+    # Machine Learning Model - LightGBM
     python service/run.py
+
+    # Deep Learning Model - MLP
+    python service/run_dl.py
 ```
 
 <br/>
