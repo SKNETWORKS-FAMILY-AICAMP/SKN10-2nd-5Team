@@ -56,3 +56,37 @@ gender와 PhoneService가 Churn(이탈 여부)와 관련이 적다는 것을 알
 - lightGBM모델은 str을 모두 Categorical 자료형으로 변환해야됨.
 
 <img src="image/Cleaning_5.png" width="700" height="auto">
+
+## Scaling, Encoding
+- 내가 쓴 모델은 lightGBM이라 할 필요는 없어서 하지 않았다.
+
+## Model 학습, 평가
+
+- 훈련/테스트 데이터를 분리하는 함수
+
+<img src="image/Model1.png" width="500" height="auto">
+
+- 교차검증 10번을 하고, 훈련/테스트 점수를 확인하는 함수
+
+<img src="image/Model2.png" width="500" height="auto">
+
+- 평가 지표를 보여주는 함수
+
+<img src="image/Model3.png" width="500" height="auto">
+
+- 함수들을 실행하고, 모델을 저장한다.
+
+<img src="image/Model4.png" width="500" height="auto">
+
+- 테스트 기준 정확도는 81%가 나온다.
+
+<img src="image/Model5.png" width="500" height="auto">
+
+- 각종 지표는 다음과 같이 나온다.
+
+<img src="image/Model6.png" width="500" height="auto">
+
+- 혼동 행렬은 다음과 같이 나온다.
+
+<img src="image/Model7.png" width="500" height="auto">
+

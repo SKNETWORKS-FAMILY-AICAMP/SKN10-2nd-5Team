@@ -21,7 +21,7 @@ def dataset_split(df) :
 
     reset_seeds()
     x_tr, x_te, y_tr, y_te = train_test_split(
-        x, y, test_size=0.2, stratify=y) # 분류형 일때 필수 : 데이터를 나눌 때 비율을 맞춰주는 것
+        x, y, test_size=0.2, stratify=y) 
 
     return x_tr, x_te, y_tr, y_te
 
@@ -63,7 +63,7 @@ def model_evaluation(model, x_te, y_te) :
     score2 = precision_score(y_te, y_pred_class)
     score3 = recall_score(y_te, y_pred_class)
     score4 = f1_score(y_te, y_pred_class)
-    print(f'auc: {auc_te}, accuracy: {score1}, precision: {score2}, recall: {score3}, f1_score: {score4}')
+    print(f'auc: {auc_te}, accuracy: {score1}, precision: {score2},\n recall: {score3}, f1_score: {score4}')
     
     # confusion matrix 출력
     conf_mx = confusion_matrix(y_te, y_pred_class, normalize="true")
