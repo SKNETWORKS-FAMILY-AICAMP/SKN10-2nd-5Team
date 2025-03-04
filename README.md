@@ -351,7 +351,7 @@
 **8. Feature Importance**
 <br/>
 
-<img src='images/feature_importance.png' width='600' height='auto'>
+<img src='images/feature_importance.png' width='800' height='auto'>
 <br/>
 <br/>
 
