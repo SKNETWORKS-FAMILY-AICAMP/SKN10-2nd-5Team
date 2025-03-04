@@ -2246,4 +2246,4 @@ parameters:
 
 end of parameters
 
-pandas_categorical:[["No", "No phone service", "Yes"], ["DSL", "Fiber optic", "No"], ["No", "No internet service", "Yes"], ["No", "No internet service", "Yes"], ["No", "No internet service", "Yes"], ["No", "No internet service", "Yes"], ["No", "No internet service", "Yes"], ["Month-to-month", "One year", "Two year"], ["Bank transfer (automatic)", "Credit card (automatic)", "Electronic check", "Mailed check"]]
+pandas_categorical:[["no", "no phone service", "yes"], ["dsl", "fiber optic", "no"], ["no", "no internet service", "yes"], ["no", "no internet service", "yes"], ["no", "no internet service", "yes"], ["no", "no internet service", "yes"], ["no", "no internet service", "yes"], ["month-to-month", "one year", "two year"], ["bank transfer (automatic)", "credit card (automatic)", "electronic check", "mailed check"]]
