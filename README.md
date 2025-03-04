@@ -451,10 +451,13 @@
 ### Mainpage
 <br/>
 
-<img src='images/최종결과_EDA1.png' width='800' height='auto'>
+
 <br/>
 
 ### EDA
+<br/>
+
+<img src='images/최종결과_EDA1.png' width='800' height='auto'>
 <br/>
 
 <img src='images/최종결과_EDA2.png' width='800' height='auto'>
