@@ -131,7 +131,7 @@ def load_model(model_stat: str):
 # 모델 선택하기
 st.divider()
 st.markdown("<h3 style='margin-bottom: -50px;'>모델 선택</h3>", unsafe_allow_html=True)
-model_stat = st.radio('', options=['ML', 'DL'], index=1, horizontal=True)
+model_stat = st.radio('', options=['ML', 'DL'], index=0, horizontal=True)
 
 # 모델 불러오기
 
