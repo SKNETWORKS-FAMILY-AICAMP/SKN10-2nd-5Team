@@ -7,7 +7,9 @@
 ### 이탈자 추격조
 <br/>
 
-<img src='images/검은조직.png' width='800' height='auto'>
+<div>
+    <img src='images/검은조직.png' width='800' height='auto'>
+</div>
 
 <table align=center>
     <tbody>
