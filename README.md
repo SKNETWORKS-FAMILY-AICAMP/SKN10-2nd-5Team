@@ -20,7 +20,7 @@
         </tr>
         <br>
         <tr>
-            <td align=center>팀장</div></a></td>
+            <td align=center><b>팀장</b></div></a></td>
             <td align=center>팀원</div></a></td>
             <td align=center>팀원</div></a></td>
             <td align=center>팀원</div></a></td>
