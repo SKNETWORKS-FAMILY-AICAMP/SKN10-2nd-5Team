@@ -7,13 +7,11 @@
 ### 이탈자 추격조
 <br/>
 
-<img src='images/검은조직.png' width='1000' height='auto'>
-<br/>
+<img src='images/검은조직.png' width='800' height='auto'>
 
 <table align=center>
     <tbody>
         <tr>
-            <br>
             <td align=center><b>이서영</b></td>
             <td align=center><b>경규휘</b></td>
             <td align=center><b>권석현</b></td>
