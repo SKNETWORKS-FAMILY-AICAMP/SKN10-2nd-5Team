@@ -21,7 +21,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler  #scaling
 from imblearn.over_sampling import SMOTE #smote
 from sklearn.utils.class_weight import compute_class_weight #scaling- weight
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 import numpy as np
 import pandas as pd
 
@@ -98,28 +98,10 @@ def cleaning_data(df):
     return df
 
 def encode_data(df):
-    df = df.copy()
-    #  Churn이 문자열이면 숫자로 변환
-    if 'Churn' in df.columns and df['Churn'].dtype == 'object':
-        df['Churn'] = df['Churn'].map({'Yes': 1, 'No': 0})
-
-    #  범주형 변수 원-핫 인코딩
-    # categorical_cols = df.select_dtypes(include=['object']).columns.tolist()
-    enc_cols = df.select_dtypes(include=['object']).columns.tolist()
-    normal_cols = list(set(df.columns) - set(enc_cols))
-    enc = OneHotEncoder()
-
-    tmp = pd.DataFrame(
-    enc.fit_transform(df[enc_cols]).toarray(),
-    columns = enc.get_feature_names_out()
-    )
-    df = pd.concat(   
-        [df[normal_cols].reset_index(drop=True), tmp.reset_index(drop=True)]
-    , axis=1
-    )
-    
-
-    #df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
+    label_encoder = LabelEncoder()
+    # 범주형 컬럼에 대해 레이블 인코딩
+    for col in df.select_dtypes(include=['object']).columns:
+        df[col] = label_encoder.fit_transform(df[col])
     return df
 
 
