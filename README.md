@@ -157,7 +157,7 @@
 - 실행되지 않을 경우, service/preprocess.py의 `from utils import reset_seeds`을 주석처리 하고, `from service.utils import reset_seeds`의 주석을 해제하여 실행한다다.
 
 ```python
-    streamlit run mainpage.py
+    streamlit run Mainpage.py
 ```
 
 <br/>
