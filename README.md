@@ -8,14 +8,42 @@
 <br/>
 
 <img src='images/검은조직.png' width='800' height='auto'>
-<br/>
 
-| **이서영** | **경규휘** | **권석현** | **원유형** | **좌민서** |
-| :---: | :---: | :---: | :---: | :---: |
-| **팀장** | 팀원 | 팀원 | 팀원 | 팀원 |
-| 모델 설계 - ML<br/>(GradientBoost)<br/>화면 구현 | 모델 설계 - ML<br/>(LightGBM)<br/> EDA | 모델 설계 - DL<br/> (MLP) | 모델 설계 - ML<br/>(Voting)<br/>화면 설계 | 모델 설계 - ML<br/>(XGBoost)<br/>화면 구현 |
-| [@Lee Seoyoung](https://github.com/Eseo0) | [@kqe0012](https://github.com/kqe123) | [@seo-droid](https://github.com/seo-droid) | [@uhyeong](https://github.com/uhyeong) | [@INe](https://github.com/INe904) |
-
+<table align=center>
+    <tbody>
+        <tr>
+            <td align=center><b>이서영</b></td>
+            <td align=center><b>경규휘</b></td>
+            <td align=center><b>권석현</b></td>
+            <td align=center><b>원유형</b></td>
+            <td align=center><b>좌민서</b></td>
+        </tr>
+        <br>
+        <tr>
+            <td align=center><b>팀장</b></div></a></td>
+            <td align=center>팀원</div></a></td>
+            <td align=center>팀원</div></a></td>
+            <td align=center>팀원</div></a></td>
+            <td align=center>팀원</div></a></td>
+        </tr>
+        <br>
+        <tr>
+            <td align=center>모델 설계 - ML<br/>(GradientBoost)<br/>화면 구현</div></a></td>
+            <td align=center>모델 설계 - ML<br/>(LightGBM)<br/> EDA</div></a></td>
+            <td align=center>모델 설계 - DL<br/> (MLP)</div></a></td>
+            <td align=center>모델 설계 - ML<br/>(Voting)<br/>화면 설계</div></a></td>
+            <td align=center>모델 설계 - ML<br/>(XGBoost)<br/>화면 구현</div></a></td>
+        </tr>
+        <br>
+        <tr>
+            <td><a href="https://github.com/Eseo0"><div align=center>@Lee Seoyoung</div></a></td>
+            <td><a href="https://github.com/kqe123"><div align=center>@kqe0012</div></a></td>
+            <td><a href="https://github.com/seo-droid"><div align=center>@seo-droid</div></a></td>
+            <td><a href="https://github.com/uhyeong"><div align=center>@uhyeong</div></a></td>
+            <td><a href="https://github.com/INe904"><div align=center>@INe</div></a></td>
+        </tr>
+    </tbody>
+</table>
 <br/>
 <br/>
 
