@@ -1,10 +1,6 @@
 # SKN10-2nd-5Team
 <br/>
 
-![](https://cdn.imweb.me/upload/S20240314bd10436a7991a/41a9769cc44e6.png)
-<br/>
-<br/>
-
 ## ⭐ 프로젝트 팀
 <br/>
 
